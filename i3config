@@ -155,8 +155,12 @@ bar {
         status_command i3status
 }
 
+# Remove titlebar
+new_window pixel 3
+hide_edge_borders both
+
 # Startup applications
-exec compton
+exec --no-startup-id compton
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id google-chrome-stable
