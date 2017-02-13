@@ -1,0 +1,56 @@
+snippet skel "A simple snippet to create a MWE in LaTeX"
+\documentclass{${1:article}}
+
+% Packages
+\usepackage[a4paper]{geometry}
+\usepackage{microtype}
+\usepackage{charter}
+
+% Start
+\begin{document}
+	$2
+\end{document}
+
+endsnippet
+
+snippet ablock "Simple alert block environment in beamer"
+\begin{alertblock}{$1}
+	$2
+\end{alertblock}
+endsnippet
+
+snippet eblock "Simple example block environment in beamer"
+\begin{exampleblock}{$1}
+	$2
+\end{exampleblock}
+endsnippet
+
+snippet fig "Figure environment: the right way"
+\begin{figure}
+	\centering
+	$1
+\end{figure}
+endsnippet
+
+snippet img "Include graphics"
+\includegraphics[width=$1\textwidth]{./images/$2}$3
+endsnippet
+
+snippet tikz "Tikzpicture environment"
+\begin{tikzpicture}
+	$1
+\end{tikzpicture}
+endsnippet
+
+snippet bf "Textbf"
+\textbf{$1}$2
+endsnippet
+
+snippet mbf "mathbf"
+\mathbf{$1}$2
+endsnippet
+
+
+snippet tx "text"
+\text{$1}$2
+endsnippet
