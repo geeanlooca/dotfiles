@@ -92,8 +92,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-xmodmap -e "clear lock" #disable caps lock switch
-xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

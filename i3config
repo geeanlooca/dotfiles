@@ -160,3 +160,6 @@ exec compton
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id google-chrome-stable
+exec xmodmap -e "clear lock" #disable caps lock switch
+exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+
