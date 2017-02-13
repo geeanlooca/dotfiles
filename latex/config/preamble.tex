@@ -3,11 +3,11 @@
 
 %%% font & looks %%%
 \usepackage[T1]{fontenc}
-\usepackage{mathpazo}
+% \usepackage{mathpazo}
 %\usepackage{palatino}
 %\usepackage{kpfonts}
 %\usepackage{times}
-%\usepackage{charter}
+\usepackage{charter}
 %\usepackage{utopia}
 
 
@@ -24,6 +24,7 @@
 \usepackage{float}
 %%% boxes %%%
 \usepackage{framed}
+\usepackage{titlesec}
 %\setlength\FrameSep{0.5em}
 
 
@@ -141,3 +142,10 @@
 
 \usepackage[framed,numbered]{matlab-prettifier}
 \input{config/macros.tex}
+
+% redefine section headings
+\titleformat{\section}{\Large \bfseries}{\fbox{\textcolor{BrickRed}{\thesection}}}{1em}{}
+
+\titleformat{\subsection}{\large \bfseries}{\textcolor{BrickRed}{\thesubsection}}{1em}{}
+
+\titleformat{\subsubsection}{\bfseries}{\textcolor{BrickRed}{\thesubsubsection}}{1em}{}
