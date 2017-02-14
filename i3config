@@ -30,7 +30,7 @@ font pango:Ubuntu Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -149,15 +149,40 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
+set $background #1d1f21
+set $foreground #c5c8c6
+set $red #cc6666
+set $green #b5bd68
+set $blue #81a2be
+set $black #969896
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
+            colors {
+                    statusline $foreground
+                    background $background
+#Border #Backgr #Font
+                    active_workspace   $blue $blue $background
+                    focused_workspace    $green $green $background
+                    inactive_workspace  $background $background $foreground
+                    urgent_workspace    $red $red $background
+            }
 }
+
+
+# class                 border  backgr. text    indicator
+client.focused_inactive $blue $blue $background $background
+client.focused          $green $green $background $background
+client.unfocused        $background $background $foreground $background
+client.urgent           $red $red $background $background
+client.placeholder      #000000 #000000 #ffffff #000000
 
 # Remove titlebar
 new_window pixel 3
-hide_edge_borders both
+# hide_edge_borders both
 
 # Startup applications
 exec --no-startup-id compton
