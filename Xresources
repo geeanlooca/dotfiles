@@ -52,6 +52,6 @@ URxvt.keysym.Home: \033[1~
 URxvt.keysym.End: \033[4~
 URxvt.keysym.KP_Home: \033[1~
 URxvt.keysym.KP_End:  \033[4~
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
 
+urxvt*depth: 32
+urxvt*background: rgba:1d00/1f00/2100/eeee
