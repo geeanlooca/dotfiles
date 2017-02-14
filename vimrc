@@ -41,15 +41,16 @@ set listchars=tab:▸\ ,eol:¬
 "colorscheme atom
 "colorscheme codeschool
 
+" hi Normal ctermbg=none
 if has('gui_running')
     " GUI colors
     " colorscheme twilight
-    colorscheme candyman
+    colorscheme codeschool
 else
     " Non-GUI (terminal) colors
-    colorscheme Tomorrow-Night
+    " colorscheme Tomorrow-Night
+    colorscheme twilight256
 endif
-    
 
 set cursorline
 set ruler
@@ -262,6 +263,7 @@ nnoremap <Leader>a :Ack! ""<left>
 nnoremap <Leader>A :Ack! <C-r><C-w><CR>
 
 nnoremap <leader>bf :CtrlPLine<CR>
+
 " Vimtex
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
