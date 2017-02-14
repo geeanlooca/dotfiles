@@ -203,6 +203,7 @@ exec --no-startup-id compton
 exec --no-startup-id dropbox start
 exec --no-startup-id redshift-gtk
 exec --no-startup-id volumeicon
+exec_always --no-startup-id numlockx
 
 # Assign workspaces
 assign [class="(?i)Clementine"] workspace $music
@@ -216,8 +217,11 @@ exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 bindsym Print exec --no-startup-id spectacle -f
 bindsym Shift+Print exec --no-startup-id spectacle -r
 
-# Music control
+# Audio and music control
 bindsym Mod1+space exec --no-startup-id clementine -t
+bindsym XF86WakeUp exec --no-startup-id amixer -D pulse set Master toggle
+bindsym XF86Sleep exec --no-startup-id amixer -q set Master 4%- unmute 
+bindsym XF86PowerOff exec --no-startup-id amixer -q set Master 4%+ unmute unmute
 
 # Additional bindings
 bindsym $mod+Shift+n move workspace to output left
@@ -239,4 +243,5 @@ bindsym $mod+g exec --no-startup-id quickswitch.py -e
 bindsym $mod+Shift+b exec --no-startup-id quickswitch.py -m
 bindsym $mod+period exec --no-startup-id quickswitch.py -s
 
-
+# Lock
+bindsym $mod+XF86PowerOff exec ~/bin/lock.sh
