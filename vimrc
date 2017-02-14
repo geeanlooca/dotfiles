@@ -47,7 +47,7 @@ if has('gui_running')
     colorscheme candyman
 else
     " Non-GUI (terminal) colors
-    colorscheme twilight256
+    colorscheme Tomorrow-Night
 endif
     
 
@@ -273,5 +273,3 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
 " CtrlP
 let g:ctrlp_follow_symlinks=1
-
-
