@@ -216,6 +216,8 @@ bindsym $mod+Shift+m move workspace to output right
 bindsym $mod+m focus output right
 bindsym $mod+n focus output left
 bindsym $mod+g exec --no-startup-id quickswitch.py -e
+bindsym $mod+Shift+s sticky toggle
+
 
 
 # Background
