@@ -212,6 +212,8 @@ bindsym $mod+u exec --no-startup-id google-chrome-stable
 bindsym $mod+t exec --no-startup-id dolphin
 exec xmodmap -e "clear lock" #disable caps lock switch
 exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+bindsym Print exec --no-startup-id spectacle -f
+bindsym Shift+Print exec --no-startup-id spectacle -r
 
 # Music control
 bindsym Mod1+space exec --no-startup-id clementine -t
