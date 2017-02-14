@@ -237,4 +237,6 @@ exec --no-startup-id nitrogen --restore
 # Quickswitch
 bindsym $mod+g exec --no-startup-id quickswitch.py -e
 bindsym $mod+Shift+b exec --no-startup-id quickswitch.py -m
+bindsym $mod+period exec --no-startup-id quickswitch.py -s
+
 
