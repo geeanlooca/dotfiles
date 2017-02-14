@@ -100,9 +100,11 @@ bindsym $mod+a focus parent
 #
 
 set $music "10: Music"
+set $mail "9: Mail"
 
 # Assign workspaces to monitors
 workspace $music output HDMI-A-0
+workspace $mail output HDMI-A-0
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -113,7 +115,7 @@ bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
+bindsym $mod+9 workspace $mail
 bindsym $mod+0 workspace $music
 
 # move focused container to workspace
@@ -125,7 +127,7 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+9 move container to workspace $mail
 bindsym $mod+Shift+0 move container to workspace $music
 
 # reload the configuration file
@@ -203,8 +205,7 @@ exec --no-startup-id redshift-gtk
 
 # Assign workspaces
 assign [class="(?i)Clementine"] workspace $music
-
-
+assign [class="(?i)KMail"] workspace $mail
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id google-chrome-stable
@@ -222,6 +223,7 @@ bindsym $mod+m focus output right
 bindsym $mod+n focus output left
 bindsym $mod+g exec --no-startup-id quickswitch.py -e
 bindsym $mod+Shift+s sticky toggle
+workspace_auto_back_and_forth yes
 
 
 
