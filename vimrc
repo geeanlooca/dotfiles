@@ -28,6 +28,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-fugitive'
 
 
 call vundle#end()            " required
@@ -293,3 +294,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " hi CursorLine cterm=bold
+" Fugitive
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+
