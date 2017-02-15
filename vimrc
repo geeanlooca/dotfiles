@@ -50,12 +50,13 @@ if has('gui_running')
     colorscheme codeschool
 else
     " Non-GUI (terminal) colors
-    colorscheme Tomorrow-Night
-    " colorscheme twilight256
+    " colorscheme Tomorrow-Night
+    colorscheme twilight256
+    " colorscheme desert
 endif
 
 
-set cursorline
+" set cursorline
 set ruler
 set number
 set relativenumber
@@ -281,7 +282,6 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 " CtrlP
 let g:ctrlp_follow_symlinks=1
 
-" hi CursorLine   cterm=bold ctermbg=yellow ctermfg=#000000
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -292,4 +292,4 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-
+" hi CursorLine cterm=bold
