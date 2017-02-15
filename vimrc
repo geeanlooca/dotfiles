@@ -7,7 +7,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
-lugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sirver/ultisnips'
@@ -113,7 +113,7 @@ set ai
 set si
 set wrap
 
-"highlight LineNr ctermfg=grey
+highlight LineNr ctermfg=grey
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
