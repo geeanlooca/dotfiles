@@ -239,6 +239,7 @@ assign [class="(?i)KSysGuard"] workspace $res
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id google-chrome-stable
+bindsym $mod+Shift+u exec --no-startup-id google-chrome-stable --incognito
 bindsym $mod+t exec --no-startup-id dolphin
 exec xmodmap -e "clear lock" #disable caps lock switch
 exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
