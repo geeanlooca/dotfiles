@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ubuntu Mono 12
+font pango:Ubuntu Mono derivative Powerline 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -99,12 +99,17 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 #
 
-set $music "10: Music"
-set $mail "9: Mail"
+set $telegram "8: Telegram "
+set $music "10: Music "
+set $mail "9: Mail "
+set $res "Resources "
+
 
 # Assign workspaces to monitors
 workspace $music output HDMI-A-0
 workspace $mail output HDMI-A-0
+workspace $telegram output HDMI-A-0
+workspace $res output HDMI-A-0
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -114,9 +119,10 @@ bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
+bindsym $mod+8 workspace $telegram
 bindsym $mod+9 workspace $mail
 bindsym $mod+0 workspace $music
+bindsym $mod+F12 workspace $res
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -126,9 +132,10 @@ bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+8 move container to workspace $telegram
 bindsym $mod+Shift+9 move container to workspace $mail
 bindsym $mod+Shift+0 move container to workspace $music
+bindsym $mod+Shift+F12 move container to workspace $res
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -174,7 +181,7 @@ set $black #969896
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3blocks
             colors {
                     statusline $foreground
                     background $background
@@ -203,11 +210,14 @@ exec --no-startup-id compton
 exec --no-startup-id dropbox start
 exec --no-startup-id redshift-gtk
 exec --no-startup-id volumeicon
+exec --no-startup-id ksysguard
 exec_always --no-startup-id numlockx
 
 # Assign workspaces
 assign [class="(?i)Clementine"] workspace $music
 assign [class="(?i)KMail"] workspace $mail
+assign [class="(?i)Telegram"] workspace $telegram
+assign [class="(?i)KSysGuard"] workspace $res
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id google-chrome-stable
