@@ -48,9 +48,10 @@ if has('gui_running')
     colorscheme codeschool
 else
     " Non-GUI (terminal) colors
-    " colorscheme Tomorrow-Night
-    colorscheme twilight256
+    colorscheme Tomorrow-Night
+    " colorscheme twilight256
 endif
+
 
 set cursorline
 set ruler
@@ -276,3 +277,5 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
 " CtrlP
 let g:ctrlp_follow_symlinks=1
+
+" hi CursorLine   cterm=bold ctermbg=yellow ctermfg=#000000
