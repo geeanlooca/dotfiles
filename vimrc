@@ -7,7 +7,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
-Plugin 'ervandew/supertab'
+lugin 'ervandew/supertab'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sirver/ultisnips'
@@ -26,6 +26,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'vim-syntastic/syntastic'
 
 
 call vundle#end()            " required
@@ -246,6 +248,7 @@ nnoremap <leader>p :CtrlPTag<CR>
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_show_diagnostics_ui = 0
 
 
 " UltiSnips
@@ -279,3 +282,14 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 let g:ctrlp_follow_symlinks=1
 
 " hi CursorLine   cterm=bold ctermbg=yellow ctermfg=#000000
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
