@@ -27,7 +27,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 
 
@@ -52,12 +52,13 @@ if has('gui_running')
 else
     " Non-GUI (terminal) colors
     " colorscheme Tomorrow-Night
-    colorscheme twilight256
+    " colorscheme twilight256
+    colorscheme jellyx
     " colorscheme desert
 endif
 
 
-" set cursorline
+set cursorline
 set ruler
 set number
 set relativenumber
@@ -76,6 +77,8 @@ map gp :bp<CR>
 if bufwinnr(1)
     map + <C-W>+
     map - <C-W>-
+    map ò <C-W><
+    map à <C-W>>
     "    map < <C-W><
     "    map > <C-W>>
 endif
@@ -269,7 +272,7 @@ nnoremap <Leader>a :Ack! ""<left>
 nnoremap <Leader>A :Ack! <C-r><C-w><CR>
 
 nnoremap <leader>bf :CtrlPLine<CR>
-
+:
 " Vimtex
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
@@ -283,10 +286,13 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 " CtrlP
 let g:ctrlp_follow_symlinks=1
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" " Syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" " let g:syntastic_c_checkers = ['clang_check']
+
+
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -296,4 +302,5 @@ let g:syntastic_check_on_wq = 0
 " hi CursorLine cterm=bold
 " Fugitive
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+
 
