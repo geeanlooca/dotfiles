@@ -303,4 +303,9 @@ let g:syntastic_check_on_wq = 0
 " Fugitive
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
+" Open compilation errors in quickfix
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 
+" Tags
+nnoremap <leader>g <C-]>
