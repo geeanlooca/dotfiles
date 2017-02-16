@@ -189,6 +189,7 @@ set $red #cc6666
 set $green #b5bd68
 set $blue #81a2be
 set $black #969896
+set $yellow #f0c674
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -209,13 +210,13 @@ bar {
 
 # class                 border  backgr. text    indicator
 client.focused_inactive $blue $blue $background $background
-client.focused          $green $green $background $background
+client.focused          $yellow $yellow $background $background
 client.unfocused        $background $background $foreground $background
 client.urgent           $red $red $background $background
 client.placeholder      #000000 #000000 #ffffff #000000
 
 # Remove titlebar
-new_window pixel 3
+new_window pixel 4
 # hide_edge_borders both
 
 # Startup applications
