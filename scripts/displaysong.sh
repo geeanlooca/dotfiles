@@ -10,5 +10,7 @@ if [ "$STAT" = "Playing" ]; then
 else
     if [ "$STAT" = "Paused" ]; then
         echo "Player paused"
+    else
+        echo "Player not running"
     fi
 fi
