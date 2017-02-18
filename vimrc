@@ -29,6 +29,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'easymotion/vim-easymotion'
 " Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tacahiroy/ctrlp-funky'
 
 
 call vundle#end()            " required
@@ -94,7 +95,7 @@ nnoremap <C-H> <C-W><C-H>
 " :W sudo saves file
 command W w !sudo tee % > /dev/null
 
-set so=7
+" set so=7
 set wildmenu
 set ignorecase
 set smartcase
@@ -123,7 +124,7 @@ highlight LineNr ctermfg=grey
 map <silent> <leader><cr> :noh<cr>
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>d :Bclose<cr>:tabclose<cr>gT
 set mouse=a
 
 " Close all the buffers
@@ -132,7 +133,7 @@ map <leader>ba :bufdo bd<cr>
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
+map <leader>td :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
@@ -183,10 +184,10 @@ map 0 ^
 map <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+" map <leader>sn ]s
+" map <leader>sp [s
+" map <leader>sa zg
+" map <leader>s? z=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -248,6 +249,10 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ca'
 nnoremap <leader>p :CtrlPTag<CR>
+nnoremap <Leader>f :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>F :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -309,3 +314,9 @@ autocmd QuickFixCmdPost    l* nested lwindow
 
 " Tags
 nnoremap <leader>g <C-]>
+
+" Folds
+nnoremap <leader> z
+
+set ssop-=options    " do not store global and local values in a session
+"
