@@ -238,12 +238,15 @@ assign [class="(?i)KMail"] workspace $mail
 assign [class="(?i)Telegram"] workspace $telegram
 assign [class="(?i)KSysGuard"] workspace $res
 
+for_window [class="mpv"] floating enable
+
 # Application bindings
 bindsym $mod+u exec --no-startup-id google-chrome-stable
 bindsym $mod+Shift+u exec --no-startup-id google-chrome-stable --incognito
 bindsym $mod+t exec --no-startup-id dolphin
-exec xmodmap -e "clear lock" #disable caps lock switch
-exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+bindsym $mod+Shift+p exec --no-startup-id sh /opt/clion-2016.3.3/bin/clion.sh
+
+# Screenshot
 bindsym Print exec --no-startup-id spectacle -f
 bindsym Shift+Print exec --no-startup-id spectacle -r
 
@@ -267,6 +270,23 @@ bindsym $mod+n focus output left
 bindsym $mod+Shift+s sticky toggle
 workspace_auto_back_and_forth yes
 
+# Mouse bindings
+set $middlebutton button2 
+set $leftbutton button1
+
+bindsym $mod+$middlebutton --whole-window floating toggle
+bindsym $mod+Shift+$middlebutton --whole-window kill
+bindsym $mod+Shift+$leftbutton --whole-window sticky toggle ; exec notify-send "Sticky status changed"
+
+mode "Session management" {
+    bindsym r exec reboot
+    bindsym s exec poweroff
+    bindsym e exec i3-msg exit
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Escape mode "Session management"
+
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
@@ -281,3 +301,7 @@ bindsym $mod+period exec --no-startup-id quickswitch.py -s
 
 # Lock
 bindsym $mod+XF86PowerOff exec ~/bin/lock.sh
+
+# Remap Caps lock to Esc
+exec xmodmap -e "clear lock" #disable caps lock switch
+exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
