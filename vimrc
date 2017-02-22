@@ -319,4 +319,7 @@ nnoremap <leader>g <C-]>
 nnoremap <leader> z
 
 set ssop-=options    " do not store global and local values in a session
+
+nnoremap <F9> :wall<CR>:make<CR><CR><CR>
+nnoremap <F10> :!./%<<CR>
 "
