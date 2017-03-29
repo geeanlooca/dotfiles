@@ -30,6 +30,7 @@ Plugin 'easymotion/vim-easymotion'
 " Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'szw/vim-tags'
 
 
 call vundle#end()            " required
@@ -233,6 +234,9 @@ endfunction
 
 " Plugin configuration
 
+" Commentary
+autocmd FileType c,cpp,java setlocal commentstring=//\ %s
+
 " NerdTree
 map <leader>nn :NERDTreeToggle<CR>
 
@@ -279,7 +283,7 @@ nnoremap <Leader>A :Ack! <C-r><C-w><CR>
 nnoremap <leader>bf :CtrlPLine<CR>
 :
 " Vimtex
-let g:vimtex_view_general_viewer = 'okular'
+" let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
@@ -297,14 +301,15 @@ let g:ctrlp_follow_symlinks=1
 " set statusline+=%*
 " " let g:syntastic_c_checkers = ['clang_check']
 
-
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" hi CursorLine cterm=bold
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+
 " Fugitive
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
@@ -320,6 +325,7 @@ nnoremap <leader> z
 
 set ssop-=options    " do not store global and local values in a session
 
+" Build and Run C programs
 nnoremap <F9> :wall<CR>:make<CR><CR><CR>
 nnoremap <F10> :!./%<<CR>
 "
