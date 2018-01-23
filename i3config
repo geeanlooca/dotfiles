@@ -30,7 +30,8 @@ font pango:Ubuntu 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id urxvt
+set $terminal urxvt
+bindsym $mod+Return exec --no-startup-id $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -229,21 +230,25 @@ exec_always --no-startup-id numlockx
 # EXTRA
 exec --no-startup-id redshift-gtk
 exec --no-startup-id dropbox start
-exec --no-startup-id ksysguard
-exec --no-startup-id /opt/telegram/Telegram
+# exec --no-startup-id telegram-desktop
 
 assign [class="(?i)Clementine"] workspace $music
 assign [class="(?i)Deluge"] workspace $torrent
-assign [class="(?i)KMail"] workspace $mail
+#assign [class="(?i)KMail"] workspace $mail
 assign [class="(?i)Telegram"] workspace $telegram
-assign [class="(?i)KSysGuard"] workspace $res
+#assign [class="(?i)KSysGuard"] workspace $res
 
 for_window [class="mpv"] floating enable
+for_window [class="feh"] floating enable
 
 # Application bindings
-bindsym $mod+u exec --no-startup-id google-chrome-stable
-bindsym $mod+Shift+u exec --no-startup-id google-chrome-stable --incognito
-bindsym $mod+t exec --no-startup-id dolphin
+bindsym $mod+u exec --no-startup-id firefox-developer-edition
+bindsym $mod+Shift+u exec --no-startup-id firefox-developer-edition --private-window
+
+# bindsym $mod+u exec --no-startup-id chromium
+# bindsym $mod+Shift+u exec --no-startup-id chromium --incognito
+# bindsym $mod+t exec --no-startup-id nemo
+bindsym $mod+t exec --no-startup-id thunar
 bindsym $mod+Shift+p exec --no-startup-id sh /opt/clion-2016.3.3/bin/clion.sh
 
 # Screenshot
@@ -300,7 +305,8 @@ bindsym $mod+Shift+b exec --no-startup-id quickswitch.py -m
 bindsym $mod+period exec --no-startup-id quickswitch.py -s
 
 # Lock
-bindsym $mod+XF86PowerOff exec ~/bin/lock.sh
+# bindsym $mod+XF86PowerOff exec ~/bin/lock.sh
+bindsym $mod+XF86PowerOff exec amixer -D pulse set Master 1+ toggle
 
 # Remap Caps lock to Esc
 exec xmodmap -e "clear lock" #disable caps lock switch
