@@ -37,9 +37,3 @@ else
     # unmount the device    
     fusermount -u $mountdir
 fi
-
-
-
-
-
-
