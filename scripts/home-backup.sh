@@ -1,6 +1,6 @@
 #!/bin/bash
 
-location=/mnt/green/backups/home/
+location=/media/green/backups/home/
 
 echo "Backing up home directory in $location"
 

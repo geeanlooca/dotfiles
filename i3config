@@ -30,7 +30,7 @@ font pango:Ubuntu 12
 floating_modifier $mod
 
 # start a terminal
-set $terminal urxvt
+set $terminal xfce4-terminal
 bindsym $mod+Return exec --no-startup-id $terminal
 
 # kill focused window
@@ -38,7 +38,9 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec "rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+d exec "rofi -combi-modi drun,run -show combi -modi combi "
+bindsym $mod+Tab exec "rofi -show window"
+bindsym $mod+Shift+d exec  --no-startup-id "/home/gianluca/bin/rofi-emoji"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -185,8 +187,8 @@ bindsym $mod+r mode "resize"
 
 
 set $background #1d1f21
-set $foreground #c5c8c6
-set $red #cc6666
+set $foreground #e5e8e6
+set $red #ee9999
 set $green #b5bd68
 set $blue #81a2be
 set $black #969896
@@ -198,12 +200,12 @@ bar {
         status_command i3blocks
         # status_command i3status
             colors {
-                    statusline $foreground
-                    background $background
+                    statusline $background
+                    background $foreground
 #Border #Backgr #Font
                     active_workspace   $blue $blue $background
-                    focused_workspace    $green $green $background
-                    inactive_workspace  $background $background $foreground
+                    focused_workspace   $red $red $background
+                    inactive_workspace  $foreground $foreground $background
                     urgent_workspace    $red $red $background
             }
 }
@@ -211,13 +213,13 @@ bar {
 
 # class                 border  backgr. text    indicator
 client.focused_inactive $blue $blue $background $background
-client.focused          $yellow $yellow $background $background
+client.focused          $green $green $background $background
 client.unfocused        $background $background $foreground $background
-client.urgent           $red $red $background $background
+client.urgent           $yellow $yellow $background $background
 client.placeholder      #000000 #000000 #ffffff #000000
 
 # Remove titlebar
-new_window pixel 4
+new_window pixel 3
 # hide_edge_borders both
 
 # Startup applications
@@ -228,15 +230,15 @@ exec --no-startup-id volumeicon
 exec_always --no-startup-id numlockx
 
 # EXTRA
+exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
 exec --no-startup-id dropbox start
 # exec --no-startup-id telegram-desktop
 
 assign [class="(?i)Clementine"] workspace $music
 assign [class="(?i)Deluge"] workspace $torrent
-#assign [class="(?i)KMail"] workspace $mail
+assign [class="(?i)Thunderbird"] workspace $mail
 assign [class="(?i)Telegram"] workspace $telegram
-#assign [class="(?i)KSysGuard"] workspace $res
 
 for_window [class="mpv"] floating enable
 for_window [class="feh"] floating enable
@@ -252,8 +254,11 @@ bindsym $mod+t exec --no-startup-id thunar
 bindsym $mod+Shift+p exec --no-startup-id sh /opt/clion-2016.3.3/bin/clion.sh
 
 # Screenshot
-bindsym Print exec --no-startup-id spectacle -f
-bindsym Shift+Print exec --no-startup-id spectacle -r
+bindsym Print exec --no-startup-id xfce4-screenshooter -f
+bindsym Shift+Print exec --no-startup-id xfce4-screenshooter -r
+bindsym Control+Print exec --no-startup-id xfce4-screenshooter -w
+
+
 
 # Audio and music control
 bindsym Mod1+space exec --no-startup-id clementine -t
@@ -311,3 +316,8 @@ bindsym $mod+XF86PowerOff exec amixer -D pulse set Master 1+ toggle
 # Remap Caps lock to Esc
 exec xmodmap -e "clear lock" #disable caps lock switch
 exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+
+# Gaps
+gaps inner 7
+gaps outer 0
+smart_gaps on

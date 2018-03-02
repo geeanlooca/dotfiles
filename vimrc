@@ -21,18 +21,22 @@ Plugin 'tpope/vim-commentary'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'kana/vim-textobj-line'
 Plugin 'lervag/vimtex'
-Plugin 'wincent/command-t'
+" Plugin 'wincent/command-t'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
+" Plugin 'jiangmiao/auto-pairs'
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'easymotion/vim-easymotion'
 " Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'szw/vim-tags'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'machakann/vim-highlightedyank'
 
 Plugin 'flazz/vim-colorschemes'
+Plugin 'gcmt/taboo.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 
 call vundle#end()            " required
@@ -57,11 +61,15 @@ else
     " Non-GUI (terminal) colors
     " colorscheme Tomorrow-Night
     " colorscheme twilight256
-    colorscheme jellyx
+    " colorscheme jellyx
     " colorscheme desert
+    " colorscheme Tomorrow
+    " set background=dark
+    colorscheme solarized
 endif
 
 
+nnoremap <CR> :noh<CR><CR>
 set cursorline
 set ruler
 set number
@@ -83,6 +91,7 @@ if bufwinnr(1)
     map - <C-W>-
     map ò <C-W><
     map à <C-W>>
+    map = <C-W>=
     "    map < <C-W><
     "    map > <C-W>>
 endif
@@ -93,6 +102,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+set splitbelow
+set splitright
 
 " nnoremap <leader>b :ls<CR>:b<space>
 " :W sudo saves file
@@ -234,6 +245,7 @@ endfunction
 
 
 
+
 " Plugin configuration
 
 " Commentary
@@ -244,7 +256,7 @@ map <leader>nn :NERDTreeToggle<CR>
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -285,12 +297,14 @@ nnoremap <Leader>A :Ack! <C-r><C-w><CR>
 nnoremap <leader>bf :CtrlPLine<CR>
 :
 " Vimtex
-" let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+" let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = "zathura"
 
-" nnoremap <c-tab> :tabNext<CR>
-" nnoremap <c-s-tab> :tabprevious<CR>
+
+" nnoremap <C-Tab> :tabNext<CR>
+" nnoremap <C-S-Tab> :tabprevious<CR>
 " inoremap <c-tab> :tabNext<CR>
 " inoremap <c-s-tab> :tabprevious<CR>
 
@@ -330,4 +344,6 @@ nnoremap <F10> :!./%<<CR>
 "
 nnoremap ; A;<ESC>
 nnoremap zb viBzf
-nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>bb :CtrlPBuffer<CR>
+
+set statusline+=%{gutentags#statusline()}

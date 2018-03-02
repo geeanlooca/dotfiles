@@ -1,7 +1,7 @@
 #!/bin/bash
 
 device="Huawei"
-location="/mnt/green/backups/p10lite-backups"
+location="/media/green/backups/p10lite-backups"
 mountdir="/media/p10lite/"
 
 echo "Looking for $device in the list of MTP-ready devices"

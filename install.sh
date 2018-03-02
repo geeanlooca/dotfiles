@@ -24,3 +24,10 @@ echo "Installing i3 configuration"
 mkdir -p ~/.config/i3/
 rm ~/.config/i3/*
 ln -s ~/dotfiles/i3config ~/.config/i3/config
+
+
+echo "Downloading and installing Lock script"
+mkdir -p ~/bin/lock-repo
+git clone https://github.com/guimeira/i3lock-fancy-multimonitor ~/bin/lock-repo
+chmod +x ~/bin/lock-repo/lock
+ln -s ~/bin/lock-repo/lock ~/bin/lock
