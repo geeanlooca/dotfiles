@@ -1,0 +1,57 @@
+def_key "j"
+    scroll_down
+def_key "k"
+    scroll_up
+def_key "h"
+    previous_column
+def_key "l"
+    next_column
+
+def_key "."
+    show_lyrics
+
+def_key "n"
+    next_found_item
+def_key "N"
+    previous_found_item
+
+# not used but bound
+def_key "J"
+    next
+
+def_key "K"
+    previous
+
+def_key "H"
+    seek_backward
+
+def_key "L"
+    seek_forward
+
+def_key "space"
+    pause
+
+def_key "g"
+    move_home
+
+def_key "G"
+    move_end
+
+def_key "t"
+    add_item_to_playlist
+
+def_key "ctrl-j"
+    select_item
+    scroll_down
+
+def_key "ctrl-k"
+    select_item
+    scroll_up
+
+def_key "d"
+    delete_playlist_items
+# def_key "z"
+#     previous
+
+# def_key "x"
+#     next

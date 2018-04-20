@@ -1,0 +1,6 @@
+rofi.color-normal:                   #2E3440,#ECEFF4,#3B4252,#8FBCBB,#2E3440
+rofi.color-urgent:                   #4C566A,#ECEFF4,#434C5E,#A3BE8C,#ECEFF4
+rofi.color-active:                   #4C566A,#ECEFF4,#434C5E,#A3BE8C,#ECEFF4
+
+! Color scheme window
+rofi.color-window: #2E3440,#B48EAD

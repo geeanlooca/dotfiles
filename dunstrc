@@ -27,7 +27,7 @@ startup_notification = false
 
 [frame]
 width = 1
-color = "#383838"
+color = "#4C566A"
 
 [shortcuts]
 close = ctrl+space

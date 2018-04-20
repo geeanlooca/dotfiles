@@ -21,22 +21,21 @@ Plugin 'tpope/vim-commentary'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'kana/vim-textobj-line'
 Plugin 'lervag/vimtex'
-" Plugin 'wincent/command-t'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
+" Plugin 'wincent/command-t'
 " Plugin 'jiangmiao/auto-pairs'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion'
-" Plugin 'vim-syntastic/syntastic'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'machakann/vim-highlightedyank'
-
 Plugin 'flazz/vim-colorschemes'
 Plugin 'gcmt/taboo.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'arcticicestudio/nord-vim'
 
 
 call vundle#end()            " required
@@ -44,7 +43,6 @@ filetype plugin indent on
 
 set t_Co=256
 set mouse=a
-set listchars=tab:▸\ ,eol:¬
 
 
 "colorscheme Monokai
@@ -56,7 +54,8 @@ set listchars=tab:▸\ ,eol:¬
 if has('gui_running')
     " GUI colors
     " colorscheme twilight
-    colorscheme codeschool
+    colorscheme nord
+    set guifont=RobotoMono\ Nerd\ Font\ Mono\ 12
 else
     " Non-GUI (terminal) colors
     " colorscheme Tomorrow-Night
@@ -65,7 +64,8 @@ else
     " colorscheme desert
     " colorscheme Tomorrow
     " set background=dark
-    colorscheme solarized
+    " colorscheme solarized
+    colorscheme nord
 endif
 
 
@@ -301,6 +301,13 @@ nnoremap <leader>bf :CtrlPLine<CR>
 " let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = "zathura"
+" let g:vimtex_compiler_latexmk = {
+"       \ 'options' : [
+"       \   '-pdflatex',
+"       \   '-synctex=1',
+"       \   '-shell-escape'
+"       \ ]
+"       \}
 
 
 " nnoremap <C-Tab> :tabNext<CR>
@@ -311,11 +318,6 @@ let g:vimtex_view_method = "zathura"
 " CtrlP
 let g:ctrlp_follow_symlinks=1
 
-" " Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" " let g:syntastic_c_checkers = ['clang_check']
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -347,3 +349,7 @@ nnoremap zb viBzf
 nnoremap <leader>bb :CtrlPBuffer<CR>
 
 set statusline+=%{gutentags#statusline()}
+
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+" let g:nord_comment_brightness = 20

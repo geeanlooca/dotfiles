@@ -108,7 +108,7 @@ bindsym $mod+a focus parent
 set $telegram "13: Telegram "
 set $music "10: Music "
 set $mail "12: Mail "
-set $res "Resources "
+set $res "14: Resources "
 set $torrent "11: Torrent "
 
 
@@ -186,35 +186,37 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-set $background #1d1f21
-set $foreground #e5e8e6
-set $red #ee9999
-set $green #b5bd68
-set $blue #81a2be
+set $background #2E3440
+set $foreground #D8DEE9
+set $ice #D8DEE9
+set $red #BF616A
+set $green #A3BE8C
+set $blue #5E81AC
 set $black #969896
-set $yellow #f0c674
+set $yellow #EBCB8B
+set $magenta #B48EAD
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3blocks
-        # status_command i3status
-            colors {
-                    statusline $background
-                    background $foreground
-#Border #Backgr #Font
-                    active_workspace   $blue $blue $background
-                    focused_workspace   $red $red $background
-                    inactive_workspace  $foreground $foreground $background
-                    urgent_workspace    $red $red $background
-            }
-}
+#bar {
+#        status_command i3blocks
+#        # status_command i3status
+#            colors {
+#                    statusline $background
+#                    background $foreground
+##Border #Backgr #Font
+#                    active_workspace   $blue $blue $background
+#                    focused_workspace   $red $red $background
+#                    inactive_workspace  $foreground $foreground $background
+#                    urgent_workspace    $red $red $background
+#            }
+#}
 
 
 # class                 border  backgr. text    indicator
-client.focused_inactive $blue $blue $background $background
-client.focused          $green $green $background $background
-client.unfocused        $background $background $foreground $background
+client.focused_inactive $ice $ice $background $background
+client.focused          $magenta $magenta $background $background
+client.unfocused        $ice $ice $foreground $background
 client.urgent           $yellow $yellow $background $background
 client.placeholder      #000000 #000000 #ffffff #000000
 
@@ -225,7 +227,7 @@ new_window pixel 3
 # Startup applications
 # CORE
 exec --no-startup-id dunst -config ~/.dunstrc
-exec --no-startup-id compton
+exec --no-startup-id compton --config ~/dotfiles/compton.conf
 exec --no-startup-id volumeicon
 exec_always --no-startup-id numlockx
 
@@ -239,17 +241,18 @@ assign [class="(?i)Clementine"] workspace $music
 assign [class="(?i)Deluge"] workspace $torrent
 assign [class="(?i)Thunderbird"] workspace $mail
 assign [class="(?i)Telegram"] workspace $telegram
+assign [class="(?i)gnome-system-monitor"] workspace $res
 
 for_window [class="mpv"] floating enable
 for_window [class="feh"] floating enable
+for_window [class="ristretto"] floating enable
+# for_window [class="com-mathworks-util-PostVMInit" title="^Fig"] floating enable
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id firefox-developer-edition
 bindsym $mod+Shift+u exec --no-startup-id firefox-developer-edition --private-window
+bindsym $mod+Control+u exec --no-startup-id chromium
 
-# bindsym $mod+u exec --no-startup-id chromium
-# bindsym $mod+Shift+u exec --no-startup-id chromium --incognito
-# bindsym $mod+t exec --no-startup-id nemo
 bindsym $mod+t exec --no-startup-id thunar
 bindsym $mod+Shift+p exec --no-startup-id sh /opt/clion-2016.3.3/bin/clion.sh
 
@@ -261,20 +264,20 @@ bindsym Control+Print exec --no-startup-id xfce4-screenshooter -w
 
 
 # Audio and music control
-bindsym Mod1+space exec --no-startup-id clementine -t
-bindsym XF86WakeUp exec --no-startup-id amixer -D pulse set Master toggle && notify-send "Mute state changed"
-bindsym XF86Sleep exec --no-startup-id amixer -q set Master 4%- unmute 
-bindsym XF86PowerOff exec --no-startup-id amixer -q set Master 4%+ unmute unmute
+# bindsym XF86WakeUp exec --no-startup-id 
+# bindsym XF86Sleep exec --no-startup-id 
+# bindsym XF86PowerOff exec --no-startup-id 
 
 
-bindsym $mod+Left exec --no-startup-id clementine -r
-bindsym $mod+Right exec --no-startup-id clementine -f
-bindsym $mod+Up exec --no-startup-id clementine --volume-up
-bindsym $mod+Down exec --no-startup-id clementine --volume-down
+bindsym $mod+Left exec --no-startup-id amixer -D pulse set Master toggle && notify-send "Mute state changed"
+bindsym $mod+Up exec --no-startup-id amixer -q set Master 4%+ unmute 
+bindsym $mod+Down exec --no-startup-id amixer -q set Master 4%- unmute
 
 # Additional bindings
 bindsym $mod+Shift+n move workspace to output left
 bindsym $mod+Shift+m move workspace to output right
+bindsym $mod+Control+n move container to output left
+bindsym $mod+Control+m move container to output right
 bindsym $mod+m focus output right
 bindsym $mod+n focus output left
 bindsym $mod+Shift+s sticky toggle
@@ -303,10 +306,11 @@ bindsym $mod+minus scratchpad show
 
 # Background
 exec --no-startup-id nitrogen --restore
+# exec --no-startup-id xsetroot -solid "#4C566A"
 
 # Quickswitch
 bindsym $mod+g exec --no-startup-id quickswitch.py -e
-bindsym $mod+Shift+b exec --no-startup-id quickswitch.py -m
+bindsym $mod+Shift+b exec --no-startup-id quickswitch.py -m;
 bindsym $mod+period exec --no-startup-id quickswitch.py -s
 
 # Lock
@@ -319,5 +323,23 @@ exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
 # Gaps
 gaps inner 7
-gaps outer 0
 smart_gaps on
+smart_borders on
+
+# Bar
+exec_always --no-startup-id $HOME/dotfiles/polybar/launch.sh
+exec --no-startup-id mpd 
+
+# Lock
+bindsym $mod+Control+b exec --no-startup-id ~/bin/lock
+
+# youtube
+bindsym $mod+y exec --no-startup-id ~/bin/utube
+
+
+# MPD control 
+bindsym Mod1+space exec --no-startup-id mpc toggle
+bindsym Mod1+h exec --no-startup-id mpc prev
+bindsym Mod1+l exec --no-startup-id mpc next
+bindsym Mod1+j exec --no-startup-id mpc volume -5;exec notify-send `mpc volume`
+bindsym Mod1+k exec --no-startup-id mpc volume +5;exec notify-send `mpc volume`

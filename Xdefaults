@@ -74,7 +74,7 @@ urxvt*background: rgba:1d00/1f00/2100/ffff
 
 URxvt.colorUL:		#4682B4
 # URxvt.font: 		xft:monospace:size=11
-URxvt.font: xft:Ubuntu Mono:pixelsize=18,style=regular
+URxvt.font: xft:Ubuntu Nerd Font:pixelsize=12,style=regular
 Xterm.font: xft:Ubuntu Mono:pixelsize=18,style=regular
 URxvt.letterSpace: -1
 
