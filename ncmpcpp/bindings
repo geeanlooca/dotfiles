@@ -10,6 +10,9 @@ def_key "l"
 def_key "."
     show_lyrics
 
+def_key ","
+    show_help
+
 def_key "n"
     next_found_item
 def_key "N"

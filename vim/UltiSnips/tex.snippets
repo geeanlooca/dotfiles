@@ -13,7 +13,7 @@ snippet skel "A simple snippet to create a MWE in LaTeX"
 
 endsnippet
 
-snippet ablock "Simple alert block environment in beamer"
+snippet ablock "Simple alert block environcaptionment in beamer"
 \begin{alertblock}{$1}
 	$2
 \end{alertblock}
@@ -28,7 +28,9 @@ endsnippet
 snippet fig "Figure environment: the right way"
 \begin{figure}
 	\centering
-	$1
+	\includegraphics[width=$1\linewidth]{${2:filename}}
+	\label{fig:${3:label}}
+	\caption{${4:caption}}
 \end{figure}
 endsnippet
 
@@ -53,4 +55,10 @@ endsnippet
 
 snippet tx "text"
 \text{$1}$2
+endsnippet
+
+snippet env
+\begin{${1:environment}}
+	$2
+\end{$1}
 endsnippet
