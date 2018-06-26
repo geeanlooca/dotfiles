@@ -1,9 +1,7 @@
-sw_volume: 23
+sw_volume: 18
 audio_device_state:1:Visualizer feed
 audio_device_state:1:My Pulse Output
-state: play
-current: 231
-time: 89.930000
+state: stop
 random: 0
 repeat: 0
 single: 0
@@ -257,4 +255,58 @@ playlist_begin
 242:Oneohtrix Point Never/Age Of/12 Still Stuff That Doesn't Happen.mp3
 243:Oneohtrix Point Never/Age Of/13 Last Known Image of a Song.mp3
 244:Oneohtrix Point Never/Age Of/14 Trance 1.mp3
+245:Fatlip/The Loneliest Punk/01 Fat Leezy.mp3
+246:Fatlip/The Loneliest Punk/02 Fatlip Intro.mp3
+247:Fatlip/The Loneliest Punk/03 First Heat.mp3
+248:Fatlip/The Loneliest Punk/04 The Bass Line.mp3
+249:Fatlip/The Loneliest Punk/05 Today's Your Day (Whachagonedu).mp3
+250:Fatlip/The Loneliest Punk/06 Freestyle.mp3
+251:Fatlip/The Loneliest Punk/07 Joe's Turkey.mp3
+252:Fatlip/The Loneliest Punk/08 I Got the Shit.mp3
+253:Fatlip/The Loneliest Punk/09 Writer's Block.mp3
+254:Fatlip/The Loneliest Punk/10 M.I.A..mp3
+255:Fatlip/The Loneliest Punk/11 The Story of Us.mp3
+256:Fatlip/The Loneliest Punk/12 Cook.mp3
+257:Fatlip/The Loneliest Punk/13 Walkabout.mp3
+258:Fatlip/The Loneliest Punk/14 All on Fly.mp3
+259:Fatlip/The Loneliest Punk/15 Lyrical Styles.mp3
+260:Fatlip/The Loneliest Punk/16 Freaky Pumps (feat. Shock G, Humpty Hump & Volume 10).mp3
+261:Fatlip/The Loneliest Punk/17 He's an Outsider.mp3
+262:Fatlip/The Loneliest Punk/18 What's Up Fatlip .mp3
+263:Fatlip/The Loneliest Punk/19 Dreams.mp3
+264:Skruigners/Duemilatre/01 Cosa vi aspettate .m4a
+265:Skruigners/Duemilatre/02 Sveglio.m4a
+266:Skruigners/Duemilatre/03 Messa in scena.m4a
+267:Skruigners/Duemilatre/04 Vecchio.m4a
+268:Skruigners/Duemilatre/05 Uomo donna topo.m4a
+269:Skruigners/Duemilatre/06 Uno.m4a
+270:Skruigners/Duemilatre/07 Sottozero.m4a
+271:Skruigners/Duemilatre/08 A mani vuote.m4a
+272:Skruigners/Duemilatre/09 Dio.m4a
+273:Skruigners/Duemilatre/10 Alla fine.m4a
+274:Skruigners/Duemilatre/11 Una mente democratica.m4a
+275:Skruigners/Duemilatre/12 Da dentro.m4a
+276:Skruigners/Duemilatre/13 Piombo e neve.m4a
+277:Skruigners/Duemilatre/14 Il mio inferno.m4a
+278:Skruigners/Duemilatre/15 Politicancro.m4a
+279:Skruigners/Duemilatre/16 2003.m4a
+280:Skruigners/Niente Dietro Niente Davanti/01 Non Mi Volto Mai.mp3
+281:Skruigners/Niente Dietro Niente Davanti/02 Io Ci Odio.mp3
+282:Skruigners/Niente Dietro Niente Davanti/03 Tra Le Fiamme.mp3
+283:Skruigners/Niente Dietro Niente Davanti/04 Chi Sei Stata.mp3
+284:Skruigners/Niente Dietro Niente Davanti/05 Alba.mp3
+285:Skruigners/Niente Dietro Niente Davanti/06 Generazione Senza.mp3
+286:Skruigners/Niente Dietro Niente Davanti/07 Soltanto Tombe.mp3
+287:Skruigners/Niente Dietro Niente Davanti/08 In Bilico.mp3
+288:Skruigners/Niente Dietro Niente Davanti/09 Triste Vederti Felice.mp3
+289:Skruigners/Niente Dietro Niente Davanti/10 Come Foglie.mp3
+290:Skruigners/Niente Dietro Niente Davanti/11 Quanti Segreti.mp3
+291:Skruigners/Niente Dietro Niente Davanti/12 Abbastanza.mp3
+292:Skruigners/Niente Dietro Niente Davanti/13 Siete La Mia Gabbia.mp3
+293:Skruigners/Niente Dietro Niente Davanti/14 L'ultimo Sorriso.mp3
+294:Skruigners/Niente Dietro Niente Davanti/15 Ltsvf.mp3
+295:Skruigners/Niente Dietro Niente Davanti/16 Cane.mp3
+296:Skruigners/Niente Dietro Niente Davanti/17 Oggi la rivolta indossa una divisa.mp3
+297:Skruigners/Niente Dietro Niente Davanti/18 Il Peso Del Cielo.mp3
+298:Skruigners/Niente Dietro Niente Davanti/19 Suono Per I Soldi.mp3
 playlist_end

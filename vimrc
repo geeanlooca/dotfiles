@@ -86,6 +86,9 @@ set number
 set hidden
 set incsearch
 
+" better :commands completion
+set wildmode=longest:full,list:full
+
 imap jj <Esc>
 
 map <space> <leader>
@@ -362,7 +365,7 @@ let g:calendar_google_task = 1
 
 " VimWiki
 let g:vimwiki_use_calendar = 1
-" let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki', 'path_html': '~/vimwiki/html', 'template_path': '~/vimwiki/templates/'}]
 au BufEnter,BufNew *.wiki nnoremap <leader><leader>r :Vimwiki2HTMLBrowse<CR>
 au BufEnter,BufNew *.wiki nnoremap <leader><leader>a :VimwikiAll2HTML<CR>
 
