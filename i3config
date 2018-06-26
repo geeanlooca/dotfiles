@@ -248,10 +248,10 @@ exec --no-startup-id feh --bg-scale /home/gianluca/Immagini/wallpaper
 bindsym $mod+XF86WakeUp exec --no-startup-id /home/gianluca/bin/random_wallpaper.py
 
 # Locking and Session Management
-bindsym $mod+XF86Sleep exec --no-startup-id /home/gianluca/bin/locker
+bindsym $mod+XF86Sleep exec --no-startup-id /home/gianluca/bin/screenlocker/lockscreen
 bindsym $mod+XF86PowerOff exec --no-startup-id /home/gianluca/bin/manage_session.py
 exec xset s off
-exec xautolock -time 30 -notify 2 -locker /home/gianluca/bin/locker -notifier "Screen will be locked in 2 minutes"
+exec xautolock -time 30 -notify 2 -locker /home/gianluca/bin/screenlocker/lockscreen -notifier "Screen will be locked in 2 minutes"
 
 bindsym XF86WakeUp exec --no-startup-id amixer -q set Master toggle && notify-send "Mute state changed"
 bindsym XF86PowerOff exec --no-startup-id amixer -q set Master 4%+ unmute 
@@ -261,7 +261,7 @@ bindsym XF86Sleep exec --no-startup-id amixer -q set Master 4%- unmute
 bindsym $mod+y exec --no-startup-id /home/gianluca/bin/utube.sh
 
 # MPD control 
-exec_always --no-startup-id ~/dotfiles/musicstart
+exec_always --no-startup-id ~/bin/musicstart
 bindsym Mod1+space exec --no-startup-id mpc toggle
 bindsym Mod1+h exec --no-startup-id mpc prev
 bindsym Mod1+l exec --no-startup-id mpc next

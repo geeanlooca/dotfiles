@@ -362,3 +362,7 @@ let g:calendar_google_task = 1
 
 " VimWiki
 let g:vimwiki_use_calendar = 1
+" let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+au BufEnter,BufNew *.wiki nnoremap <leader><leader>r :Vimwiki2HTMLBrowse<CR>
+au BufEnter,BufNew *.wiki nnoremap <leader><leader>a :VimwikiAll2HTML<CR>
+
