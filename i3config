@@ -184,6 +184,7 @@ assign [class="(?i)gnome-system-monitor"] workspace $res
 for_window [class="mpv"] floating enable
 # for_window [class="feh"] floating enable
 for_window [class="ristretto"] floating enable
+# for_window [window_role="ncmpcpp"] floating enable
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id firefox
@@ -261,6 +262,7 @@ bindsym XF86Sleep exec --no-startup-id amixer -q set Master 4%- unmute
 bindsym $mod+y exec --no-startup-id /home/gianluca/bin/utube.sh
 
 # MPD control 
+bindsym $mod+i exec --no-startup-id /home/gianluca/bin/musicplayerhandler.sh
 exec_always --no-startup-id ~/bin/musicstart
 bindsym Mod1+space exec --no-startup-id mpc toggle
 bindsym Mod1+h exec --no-startup-id mpc prev

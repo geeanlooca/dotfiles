@@ -1,7 +1,9 @@
 sw_volume: 18
 audio_device_state:1:Visualizer feed
 audio_device_state:1:My Pulse Output
-state: stop
+state: play
+current: 352
+time: 120.081000
 random: 0
 repeat: 0
 single: 0
@@ -309,4 +311,66 @@ playlist_begin
 296:Skruigners/Niente Dietro Niente Davanti/17 Oggi la rivolta indossa una divisa.mp3
 297:Skruigners/Niente Dietro Niente Davanti/18 Il Peso Del Cielo.mp3
 298:Skruigners/Niente Dietro Niente Davanti/19 Suono Per I Soldi.mp3
+299:Iron Bong/Big Hits/01 death pac.mp3
+300:Iron Bong/Big Hits/02 took too much.mp3
+301:Iron Bong/Big Hits/03 peyote pudding.mp3
+302:Iron Bong/Big Hits/04 the point.mp3
+303:Iron Bong/Big Hits/05 apple gate.mp3
+304:Iron Bong/Big Hits/06 feedback is free.mp3
+305:Iron Bong/Big Hits/07 friendly strangers.mp3
+306:Iron Bong/Big Hits/08 sell mutations.mp3
+307:Hellhammer/Demon Entrails/01 Crucifixion.mp3
+308:Hellhammer/Demon Entrails/01 Intro.mp3
+309:Hellhammer/Demon Entrails/02 Maniac.mp3
+310:Hellhammer/Demon Entrails/02 Messiah.mp3
+311:Hellhammer/Demon Entrails/03 (Execution) When Hell's Near.mp3
+312:Hellhammer/Demon Entrails/03 The Third of the Storms (Evoked Damnation).mp3
+313:Hellhammer/Demon Entrails/04 Buried and Forgotten.mp3
+314:Hellhammer/Demon Entrails/04 Decapitator.mp3
+315:Hellhammer/Demon Entrails/05 Blood Insanity.mp3
+316:Hellhammer/Demon Entrails/05 Maniac [Re-Recorded Version].mp3
+317:Hellhammer/Demon Entrails/06 Eurynomos.mp3
+318:Hellhammer/Demon Entrails/06 Power of Satan.mp3
+319:Hellhammer/Demon Entrails/07 Reaper.mp3
+320:Hellhammer/Demon Entrails/07 Triumph of Death [Re-Recorded Version].mp3
+321:Hellhammer/Demon Entrails/08 Death Fiend.mp3
+322:Hellhammer/Demon Entrails/08 Revelations of Doom.mp3
+323:Hellhammer/Demon Entrails/09 Reaper [Re-Recorded Version].mp3
+324:Hellhammer/Demon Entrails/09 Triumph of Death.mp3
+325:Hellhammer/Demon Entrails/10 Metallic Storm.mp3
+326:Hellhammer/Demon Entrails/10 Satanic Rites.mp3
+327:Hellhammer/Demon Entrails/11 Crucifixion [Re-Recorded Version].mp3
+328:Hellhammer/Demon Entrails/11 Ready for Slaughter.mp3
+329:Hellhammer/Demon Entrails/12 Dark Warriors.mp3
+330:Hellhammer/Demon Entrails/12 Outro.mp3
+331:Hellhammer/Demon Entrails/13 Hammerhead.mp3
+332:Hellhammer/Demon Entrails/14 Angel of Destruction.mp3
+333:Hellhammer/Demon Entrails/15 Bloody Pussies.mp3
+334:Hellhammer/Demon Entrails/16 Chainsaw.mp3
+335:Hellhammer/Demon Entrails/17 Sweet Torment.mp3
+336:Felix da Housecat/Devin Dazzle & the Neon Fever/01 Intro.mp3
+337:Felix da Housecat/Devin Dazzle & the Neon Fever/02 Rocket Ride.mp3
+338:Felix da Housecat/Devin Dazzle & the Neon Fever/03 What She Wants.mp3
+339:Felix da Housecat/Devin Dazzle & the Neon Fever/04 Short Skirts.mp3
+340:Felix da Housecat/Devin Dazzle & the Neon Fever/05 Ready 2 Wear.mp3
+341:Felix da Housecat/Devin Dazzle & the Neon Fever/06 Romantique.mp3
+342:Felix da Housecat/Devin Dazzle & the Neon Fever/07 Everyone Is Someone In LA.mp3
+343:Felix da Housecat/Devin Dazzle & the Neon Fever/11 Hunting Season.mp3
+344:Felix da Housecat/Devin Dazzle & the Neon Fever/12 Nitelife Funworld.mp3
+345:Felix da Housecat/Devin Dazzle & the Neon Fever/13 Nina.mp3
+346:Felix da Housecat/Devin Dazzle & the Neon Fever/14 Devin Dazzle Theme.mp3
+347:Felix da Housecat/Devin Dazzle & the Neon Fever/15 Neon Human.mp3
+348:DJ Seinfeld/Time Spent Away From U/01 - I Hope I Sleep Tonight.mp3
+349:DJ Seinfeld/Time Spent Away From U/02 - I Saw Her Kiss Him In Front Of Me & I Was Like WTF_.mp3
+350:DJ Seinfeld/Time Spent Away From U/03 - Bring U Back.mp3
+351:DJ Seinfeld/Time Spent Away From U/04 - Too Late For U And M1.mp3
+352:DJ Seinfeld/Time Spent Away From U/05 - Forgiven.mp3
+353:DJ Seinfeld/Time Spent Away From U/06 - Time Spent Away From U.mp3
+354:DJ Seinfeld/Time Spent Away From U/07 - With My Luv.mp3
+355:DJ Seinfeld/Time Spent Away From U/08 - Another Way Back.mp3
+356:DJ Seinfeld/Time Spent Away From U/09 - It's Just My Luv.mp3
+357:DJ Seinfeld/Time Spent Away From U/10 - How U Make Me Feel.mp3
+358:DJ Seinfeld/Time Spent Away From U/11 - U Hold Me Without Touch.mp3
+359:DJ Seinfeld/Time Spent Away From U/12 - Come Thru For U.mp3
+360:DJ Seinfeld/Time Spent Away From U/13 - U.mp3
 playlist_end
