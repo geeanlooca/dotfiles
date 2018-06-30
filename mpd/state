@@ -1,9 +1,9 @@
 sw_volume: 18
 audio_device_state:1:Visualizer feed
 audio_device_state:1:My Pulse Output
-state: play
-current: 352
-time: 120.081000
+state: pause
+current: 385
+time: 238.585000
 random: 0
 repeat: 0
 single: 0
@@ -373,4 +373,107 @@ playlist_begin
 358:DJ Seinfeld/Time Spent Away From U/11 - U Hold Me Without Touch.mp3
 359:DJ Seinfeld/Time Spent Away From U/12 - Come Thru For U.mp3
 360:DJ Seinfeld/Time Spent Away From U/13 - U.mp3
+361:Tommy Guerrero/Soul Food Taqueria/01 Intro Lectric Chile Goat.mp3
+362:Tommy Guerrero/Soul Food Taqueria/02 Abierto.mp3
+363:Tommy Guerrero/Soul Food Taqueria/03 Organism.mp3
+364:Tommy Guerrero/Soul Food Taqueria/04 Thank You MK.mp3
+365:Tommy Guerrero/Soul Food Taqueria/05 Tatanka.mp3
+366:Tommy Guerrero/Soul Food Taqueria/06 Interlude Train of Thought.mp3
+367:Tommy Guerrero/Soul Food Taqueria/07 It Gets Heavy.mp3
+368:Tommy Guerrero/Soul Food Taqueria/08 Thin Brown Layer.mp3
+369:Tommy Guerrero/Soul Food Taqueria/09 Interlude So Many Years Ago.mp3
+370:Tommy Guerrero/Soul Food Taqueria/10 Terra Unfirma.mp3
+371:Tommy Guerrero/Soul Food Taqueria/11 Gettin It Together.mp3
+372:Tommy Guerrero/Soul Food Taqueria/12 Another Brother Gone.mp3
+373:Tommy Guerrero/Soul Food Taqueria/13 Broken Blood.mp3
+374:Tommy Guerrero/Soul Food Taqueria/14 Interlude and the Day Goes By.mp3
+375:Tommy Guerrero/Soul Food Taqueria/15 Lost Unfound.mp3
+376:Tommy Guerrero/Soul Food Taqueria/16 The Color of Life.mp3
+377:Tommy Guerrero/Soul Food Taqueria/17 Falling Awake.mp3
+378:Four Tet/Beautiful Rewind/01 Gong.mp3
+379:Four Tet/Beautiful Rewind/02 Parallel Jalebi.mp3
+380:Four Tet/Beautiful Rewind/03 Our Navigation.mp3
+381:Four Tet/Beautiful Rewind/04 Ba Teaches Yoga.mp3
+382:Four Tet/Beautiful Rewind/05 Kool FM.mp3
+383:Four Tet/Beautiful Rewind/06 Crush.mp3
+384:Four Tet/Beautiful Rewind/07 Buchla.mp3
+385:Four Tet/Beautiful Rewind/08 Aerial.mp3
+386:Four Tet/Beautiful Rewind/09 Ever Never.mp3
+387:Four Tet/Beautiful Rewind/10 Unicorn.mp3
+388:Four Tet/Beautiful Rewind/11 Your Body Feels.mp3
+389:Four Tet/Dialogue/01 The Space Of Two Weeks.mp3
+390:Four Tet/Dialogue/02 Chiron.mp3
+391:Four Tet/Dialogue/03 Alambradas.mp3
+392:Four Tet/Dialogue/04 3.3 Degrees From The Pole.mp3
+393:Four Tet/Dialogue/05 Misnomer.mp3
+394:Four Tet/Dialogue/06 Liquefaction.mp3
+395:Four Tet/Dialogue/07 She Scanned.mp3
+396:Four Tet/Dialogue/08 Calamine.mp3
+397:Four Tet/Dialogue/09 The Butterfly Effect.mp3
+398:Four Tet/Dialogue/10 Aying.mp3
+399:Four Tet/Dialogue/11 Fume.mp3
+400:Four Tet/Dialogue/12 Charm.mp3
+401:Four Tet/Everything Ecstatic/01 A Joy.mp3
+402:Four Tet/Everything Ecstatic/02 Smile Around The Face.mp3
+403:Four Tet/Everything Ecstatic/03 Fuji Check.mp3
+404:Four Tet/Everything Ecstatic/04 Sun Drums And Soil.mp3
+405:Four Tet/Everything Ecstatic/05 Clouding.mp3
+406:Four Tet/Everything Ecstatic/06 And Then Patterns.mp3
+407:Four Tet/Everything Ecstatic/07 High Fives.mp3
+408:Four Tet/Everything Ecstatic/08 Turtle Turtle Up.mp3
+409:Four Tet/Everything Ecstatic/09 Sleep, Eat Food, Have Visions.mp3
+410:Four Tet/Everything Ecstatic/10 You Were There With Me.mp3
+411:Four Tet/New Energy/01 - Alap.mp3
+412:Four Tet/New Energy/02 - Two Thousand And Seventeen.mp3
+413:Four Tet/New Energy/03 - LA Trance.mp3
+414:Four Tet/New Energy/04 - Tremper.mp3
+415:Four Tet/New Energy/05 - Lush.mp3
+416:Four Tet/New Energy/06 - Scientists.mp3
+417:Four Tet/New Energy/07 - Falls 2.mp3
+418:Four Tet/New Energy/08 - You Are Loved.mp3
+419:Four Tet/New Energy/09 - SW9 9SL.mp3
+420:Four Tet/New Energy/10 - 10 Midi.mp3
+421:Four Tet/New Energy/11 - Memories.mp3
+422:Four Tet/New Energy/12 - Daughter.mp3
+423:Four Tet/New Energy/13 - Gentle Soul.mp3
+424:Four Tet/New Energy/14 - Planet.mp3
+425:Four Tet/Pause/01 Glue of the World.mp3
+426:Four Tet/Pause/02 Twenty Three.mp3
+427:Four Tet/Pause/03 Harmony One.mp3
+428:Four Tet/Pause/04 Parks.mp3
+429:Four Tet/Pause/05 Leila Came Round and We Watched a Video.mp3
+430:Four Tet/Pause/06 Untangle.mp3
+431:Four Tet/Pause/07 Everything Is Alright.mp3
+432:Four Tet/Pause/08 No More Mosquitoes.mp3
+433:Four Tet/Pause/09 Tangle.mp3
+434:Four Tet/Pause/10 You Could Ruin My Day.mp3
+435:Four Tet/Pause/11 Hilarious Movie of the 90's.mp3
+436:Four Tet/Pink/1-01 Locked.mp3
+437:Four Tet/Pink/1-02 Lion.mp3
+438:Four Tet/Pink/1-03 Jupiters.mp3
+439:Four Tet/Pink/1-04 Ocoras.mp3
+440:Four Tet/Pink/1-05 128 Harps.mp3
+441:Four Tet/Pink/1-06 Pyramid.mp3
+442:Four Tet/Pink/1-07 Peace For Earth.mp3
+443:Four Tet/Pink/1-08 Pinnacles.mp3
+444:Four Tet/Rounds/01 Hands.mp3
+445:Four Tet/Rounds/02 She Moves She.mp3
+446:Four Tet/Rounds/03 First Thing.mp3
+447:Four Tet/Rounds/04 My Angel Rocks Back And Forth.mp3
+448:Four Tet/Rounds/05 Spirit Fingers.mp3
+449:Four Tet/Rounds/06 Unspoken.mp3
+450:Four Tet/Rounds/07 Chia.mp3
+451:Four Tet/Rounds/08 As Serious As Your Life.mp3
+452:Four Tet/Rounds/09 And They All Look Broken Hearted.mp3
+453:Four Tet/Rounds/10 Slow Jam.mp3
+454:Four Tet/There Is Love In You/01 Angel Echoes.mp3
+455:Four Tet/There Is Love In You/02 Love Cry.mp3
+456:Four Tet/There Is Love In You/03 Circling.mp3
+457:Four Tet/There Is Love In You/04 Pablo's Heart.mp3
+458:Four Tet/There Is Love In You/05 Sing.mp3
+459:Four Tet/There Is Love In You/06 This Unfolds.mp3
+460:Four Tet/There Is Love In You/07 Reversing.mp3
+461:Four Tet/There Is Love In You/08 Plastic People.mp3
+462:Four Tet/There Is Love In You/09 She Just Likes to Fight.mp3
+463:Four Tet/Thirtysixtwentyfive/01 Thirtysixtwentfive.mp3
 playlist_end
