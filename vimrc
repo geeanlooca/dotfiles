@@ -31,11 +31,12 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'ludovicchabant/vim-gutentags'
 " Plugin 'altercation/vim-colors-solarized'
-Plugin 'flazz/vim-colorschemes'
+" Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vimwiki/vimwiki'
 Plugin 'itchyny/calendar.vim'
+Plugin 'dracula/vim'
 " Plugin 'jceb/vim-orgmode'
 " Plugin 'tpope/vim-speeddating'
 " Plugin 'vim-scripts/utl.vim'
@@ -53,6 +54,7 @@ let g:deoplete#enable_at_startup = 1
 set t_Co=256
 set mouse=a
 
+set encoding=utf-8
 
 "colorscheme Monokai
 "colorscheme Tomorrow-Night
@@ -67,7 +69,7 @@ if has('gui_running')
     " set guifont=RobotoMono\ Nerd\ Font\ Mono\ 12
 else
     " Non-GUI (terminal) colors
-    colorscheme Tomorrow-Night
+    colorscheme dracula
     " colorscheme twilight256
     " colorscheme jellyx
     " colorscheme desert
@@ -263,11 +265,15 @@ autocmd FileType c,cpp,java setlocal commentstring=//\ %s
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
+let g:Powerline_symbols='unicode'
+
+
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+
 
 " Ctrl+P
 let g:ctrlp_map = '<c-p>'
@@ -365,7 +371,7 @@ let g:calendar_google_task = 1
 
 " VimWiki
 let g:vimwiki_use_calendar = 1
-let g:vimwiki_list = [{'path': '~/vimwiki', 'path_html': '~/vimwiki/html', 'template_path': '~/vimwiki/templates/'}]
+let g:vimwiki_list = [{'path': '~/wiki', 'path_html': '~/vimwiki/html', 'template_path': '~/vimwiki/templates/'}]
 au BufEnter,BufNew *.wiki nnoremap <leader><leader>r :Vimwiki2HTMLBrowse<CR>
 au BufEnter,BufNew *.wiki nnoremap <leader><leader>a :VimwikiAll2HTML<CR>
 
