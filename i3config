@@ -6,7 +6,7 @@ font pango:Ubuntu 12
 floating_modifier $mod
 
 # start a terminal
-set $terminal xfce4-terminal
+set $terminal gnome-terminal
 bindsym $mod+Return exec --no-startup-id $terminal
 bindsym Control+Return exec --no-startup-id /home/gianluca/bin/rofi-firefox.sh
 
@@ -130,7 +130,7 @@ set $foreground #D8DEE9
 set $ice #D8DEE9
 set $red #BF616A
 set $green #A3BE8C
-set $blue #5E81AC
+set $blue #9FB4DF
 set $black #000000
 set $white #FFFFFF
 set $yellow #EBCB8B
@@ -143,7 +143,7 @@ colors {
             statusline $white
             background $black
                                 #Border #Backgr #Font
-            active_workspace   $green $green $background
+            active_workspace   $green $green $black
             focused_workspace   $blue $blue $black
             inactive_workspace  $black $black $white
             urgent_workspace    $magenta $magenta $background
@@ -152,9 +152,9 @@ colors {
 
 
 # class                 border  backgr. text    indicator
-client.focused_inactive $ice $ice $background $background
-client.focused          $blue $blue $ice $background
-client.unfocused        $ice $ice $background $background
+client.focused_inactive $green $green $black $background
+client.focused          $blue $blue $black $background
+client.unfocused        $black $black $white $background
 client.urgent           $yellow $yellow $background $background
 client.placeholder      #000000 #000000 #ffffff #000000
 
@@ -165,8 +165,8 @@ new_window pixel 3
 # Startup applications
 # CORE
 exec --no-startup-id dunst -config ~/.dunstrc
-exec_always --no-startup-id pkill compton ; compton --config ~/dotfiles/compton.conf
-exec --no-startup-id volumeicon
+exec_always --no-startup-id pkill compton ; compton
+#exec --no-startup-id volumeicon
 exec --no-startup-id numlockx
 
 # EXTRA
@@ -185,7 +185,6 @@ assign [class="(?i)gnome-system-monitor"] workspace $res
 for_window [class="mpv"] floating enable
 # for_window [class="feh"] floating enable
 for_window [class="ristretto"] floating enable
-for_window [window_role="ncmpcpp"] floating enable
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id firefox
@@ -243,10 +242,8 @@ exec setxkbmap -option caps:swapescape
 # Gaps
 gaps inner 7
 smart_gaps on
-smart_borders on
-
-# Wallpaper
-exec --no-startup-id feh --bg-scale /home/gianluca/Immagini/wallpaper
+smart_borders on # Wallpaper
+exec --no-startup-id feh --bg-scale /home/gianluca/Pictures/wallpaper
 bindsym $mod+XF86WakeUp exec --no-startup-id /home/gianluca/bin/random_wallpaper.py
 
 # Locking and Session Management
@@ -263,7 +260,7 @@ bindsym XF86Sleep exec --no-startup-id amixer -q set Master 4%- unmute
 bindsym $mod+y exec --no-startup-id /home/gianluca/bin/utube.sh
 
 # MPD control 
-bindsym $mod+i exec --no-startup-id /home/gianluca/bin/musicplayerhandler.sh
+#bindsym $mod+i exec --no-startup-id /home/gianluca/bin/musicplayerhandler.sh
 exec_always --no-startup-id ~/bin/musicstart
 bindsym Mod1+space exec --no-startup-id mpc toggle
 # bindsym Mod1+h exec --no-startup-id mpc prev
@@ -277,17 +274,12 @@ bindsym $mod+F8 exec --no-startup-id mpc next
 bindsym $mod+F6 exec --no-startup-id mpc volume -5
 bindsym $mod+F7 exec --no-startup-id mpc volume +5
 
-# exec_always --no-startup-id xfce4-terminal --role="dropdown"
-# for_window [instance="dropdown"] floating enable
-# for_window [instance="dropdown"] move scratchpad
-# bindsym $mod+backspace [instance="dropdown"] scratchpad show; move position center 
-
 
 # Dropdown terminal
 
-exec xfce4-terminal --title=scratchterm
-bindsym $mod+o [title="scratchterm"] scratchpad show
-for_window [title="scratchterm"] floating enable sticky enable
-for_window [title="scratchterm"] move scratchpad
+for_window [window_role="dropdown"] floating enable
+bindsym $mod+o exec ~/bin/dropdown.sh
 
-
+# ncmpcpp
+bindsym $mod+i exec ~/bin/musicplayerhandler.sh
+for_window [window_role="ncmpcpp"] floating enable
