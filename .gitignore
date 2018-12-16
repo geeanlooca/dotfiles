@@ -47,3 +47,7 @@
 desktop.ini
 *.swp
 tags
+
+
+mpv/watch_later/*
+mpd/database
