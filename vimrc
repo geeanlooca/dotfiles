@@ -1,65 +1,78 @@
+"           _
+"          (_)
+"    __   __ _  _ __ ___   _ __   ___
+"    \ \ / /| || '_ ` _ \ | '__| / __|
+"  _  \ V / | || | | | | || |   | (__
+" (_)  \_/  |_||_| |_| |_||_|    \___|
 
+
+
+" Vundle
+set nocompatible
 filetype off
-"
-" Plugin installation
 set rtp+=~/.vim/bundle/Vundle.vim
+
+
+
+" Plugins
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-
-" Plugin 'scrooloose/nerdtree'
-
+Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'sirver/ultisnips'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'rbonvall/vim-textobj-latex'
 Plugin 'kana/vim-textobj-user'
-Plugin 'Valloric/YouCompleteMe'
-" Plugin 'justincampbell/vim-eighties'
-" Plugin 'rbonvall/vim-textobj-latex'
+Plugin 'lifepillar/vim-solarized8'
 Plugin 'tpope/vim-commentary'
-" Plugin 'christoomey/vim-system-copy'
-Plugin 'kana/vim-textobj-line'
+Plugin 'machakann/vim-highlightedyank'
 Plugin 'lervag/vimtex'
-Plugin 'mileszs/ack.vim'
-Plugin 'kien/ctrlp.vim'
-" Plugin 'wincent/command-t'
-" Plugin 'jiangmiao/auto-pairs'
-" Plugin 'easymotion/vim-easymotion'
-" Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'junegunn/fzf.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'ludovicchabant/vim-gutentags'
-" Plugin 'altercation/vim-colors-solarized'
-" Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'vimwiki/vimwiki'
-Plugin 'itchyny/calendar.vim'
-Plugin 'dracula/vim'
-" Plugin 'jceb/vim-orgmode'
-" Plugin 'tpope/vim-speeddating'
-" Plugin 'vim-scripts/utl.vim'
-" Plugin 'gcmt/taboo.vim'
-" Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'arcticicestudio/nord-vim'
-
+Plugin 'ludovicchabant/vim-gutentags'
 
 call vundle#end()            " required
 filetype plugin indent on
-" set omnifunc=syntaxcomplete#Complete
 
-let g:deoplete#enable_at_startup = 1
+" Useful mappings
+""""""""""""""""""
+map 0 ^
+map <space> <leader>
+map <space><space> <leader><leader>
 
-set t_Co=256
-set mouse=a
 
+" Clipboard Management
+set clipboard=unnamedplus
 set encoding=utf-8
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
 
+" Folding
+set foldenable
+set foldmethod=manual
+set foldcolumn=1
+autocmd BufWrite * mkview
+autocmd BufRead * silent loadview
+" augroup AutoSaveFolds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent loadview
+" augroup END
+
+
+" Colorscheme
+"
 "colorscheme Monokai
-"colorscheme Tomorrow-Night
 "colorscheme atom
 "colorscheme codeschool
+
+syntax enable
+set t_Co=256
+set termguicolors
 
 " hi Normal ctermbg=none
 if has('gui_running')
@@ -69,36 +82,31 @@ if has('gui_running')
     " set guifont=RobotoMono\ Nerd\ Font\ Mono\ 12
 else
     " Non-GUI (terminal) colors
-    colorscheme dracula
+    " colorscheme dracula
+    colorscheme solarized8_flat
     " colorscheme twilight256
     " colorscheme jellyx
     " colorscheme desert
     " colorscheme Tomorrow
     " set background=dark
+    "
     " colorscheme solarized
     " colorscheme nord
 endif
 
 
-nnoremap <CR> :noh<CR><CR>
-set cursorline
-set ruler
-set number
-" set relativenumber
-set hidden
-set incsearch
-
-" better :commands completion
-set wildmode=longest:full,list:full
-
-imap jj <Esc>
-
-map <space> <leader>
-map <space><space> <leader><leader>
-map <leader>s :w!<cr>
+" Buffer management
 map gn :bn<CR>
 map gp :bp<CR>
+nnoremap <leader>d :bd<CR>
+nnoremap <leader>D :bd!<CR>
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>
 
+
+" Window management
 if bufwinnr(1)
     map è <C-W>+
     map - <C-W>-
@@ -115,16 +123,21 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-set splitbelow
+nnoremap <leader>wj <C-W><C-J>
+nnoremap <leader>wk <C-W><C-K>
+nnoremap <leader>wl <C-W><C-L>
+nnoremap <leader>wh <c-w><c-h>
+nnoremap <leader>ws :split<cr>
+nnoremap <leader>wv :vsplit<CR>
+nnoremap <leader>wd <C-W>q
 set splitright
+set splitbelow
 
-" nnoremap <leader>b :ls<CR>:b<space>
-" :W sudo saves file
-" command W w !sudo tee % > /dev/null
 
-" set so=7
-set wildmenu
-set ignorecase
+" General options
+""""""""""""""""""
+
+set ignorecase " case insensitive search
 set smartcase
 set hlsearch
 set lazyredraw
@@ -134,174 +147,87 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set foldcolumn=1
-syntax enable
 set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
-set lbr
+set linebreak
 set tw=500
-set ai
-set si
+set autoindent
+set smartindent
 set wrap
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
-" Close the current buffer
-" map <leader>d :Bclose<cr>:tabclose<cr>gT
 set mouse=a
 
-" Close all the buffers
-" map <leader>ba :bufdo bd<cr>
+nnoremap <CR> :noh<CR><CR>
+set nocursorline
+set ruler
+set number
+" set relativenumber
+set hidden
+set incsearch
 
-" Useful mappings for managing tabs
-" map <leader>tn :tabnew<cr>
-" map <leader>to :tabonly<cr>
-" map <leader>td :tabclose<cr>
-" map <leader>tm :tabmove
-" map <leader>t<leader> :tabnext
+" better :commands completion
+set wildmenu
+set wildignore+=*.md5,*.cfg,*.o,*.pyc,*.*synctex*,*.pdf,*.zip,*.aux,.git
+set wildmode=longest:full,list:full
 
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-" nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-" au TabLeave * let g:lasttab = tabpagenr()
+" Open compilation errors in quickfix
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 
+" Return to last edit position when opening files 
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-" map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers
-" try
-" set switchbuf=useopen,usetab,newtab
-" set stal=2
-" catch
-" endtry
-
-" Return to last edit position when opening files (You want this!)
-" au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
 
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" do not store global and local values in a session
+set ssop-=options    
+    
+
+" Tabs management
+map <leader>tc :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>td :tabclose<cr>
+map <leader>tm :tabmove
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-" map <leader>ss :setlocal spell!<cr>
-
+" Spell Checking
+" Toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
 " Shortcuts using <leader>
 " map <leader>sn ]s
 " map <leader>sp [s
 " map <leader>sa zg
 " map <leader>s? z=
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Returns true if paste mode is enabled
-" function! HasPaste()
-" if &paste
-"     return 'PASTE MODE  '
-" endif
-" set lazyredraw
-" return ''
-" endfunction
-
-" Don't close window, when deleting a buffer
-" command! Bclose call <SID>BufcloseCloseIt()
-" function! <SID>BufcloseCloseIt()
-" let l:currentBufNum = bufnr("%")
-" let l:alternateBufNum = bufnr("#")
-
-" if buflisted(l:alternateBufNum)
-"  buffer #
-" else
-"  bnext
-" endif
-
-" if bufnr("%") == l:currentBufNum
-"  new
-" endif
-
-" if buflisted(l:currentBufNum)
-"  execute("bdelete! ".l:currentBufNum)
-" endif
-" endfunction
-
-
-
-
-" Plugin configuration
 
 " Commentary
 autocmd FileType c,cpp,java setlocal commentstring=//\ %s
 
-" NerdTree
+
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols='unicode'
 
-
-
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-
-" Ctrl+P
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ca'
-let g:ctrlp_follow_symlinks=1
-nnoremap <leader>p :CtrlP ~<CR>
-nnoremap <leader>bb :CtrlPBuffer<CR>
-nnoremap <leader>bf :CtrlPLine<CR>
-" nnoremap <Leader>f :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-" nnoremap <Leader>F :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-
-
-" UltiSnips
+" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="horizontal"
-" let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
-
-" Commant-T
-"let g:CommandTScanDotDirectoris=1
-set wildignore+=/home/gianluca/bin/M*,*.md5,*.cfg,*.o,*.pyc,*.*synctex*,*.pdf,*.zip,*.aux
-
-" Ack
-nnoremap <Leader>a :Ack! ""<left>
-nnoremap <Leader>A :Ack! <C-r><C-w><CR>
+let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
+let g:tex_flavor = "latex"
 
 
 " Vimtex
@@ -315,63 +241,48 @@ let g:vimtex_fold_enabled = 1
 let g:vimtex_complete_recursive_bib = 1
 
 
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
-"
-" let g:vimtex_compiler_latexmk = {
-"       \ 'options' : [
-"       \   '-pdflatex',
-"       \   '-synctex=1',
-"       \   '-shell-escape'
-"       \ ]
-"       \}
-
-
-" nnoremap <C-Tab> :tabNext<CR>
-" nnoremap <C-S-Tab> :tabprevious<CR>
-" inoremap <c-tab> :tabNext<CR>
-" inoremap <c-s-tab> :tabprevious<CR>
-
-
-
 " Fugitive
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
-" Open compilation errors in quickfix
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-
 " Tags
 nnoremap <leader>g <C-]>
+set statusline+=%{gutentags#statusline()};
 
-set ssop-=options    " do not store global and local values in a session
+" Autocompletion
+" Copy pasted from lervag's vimrc - https://github.com/lervag/dotvim/blob/master/vimrc
+let g:ycm_key_invoke_completion = '<C-space>'
+if !exists('g:ycm_semantic_triggers')
+let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+" let g:qf_auto_open_quickfix = 0
 
-nnoremap ; A;<ESC>
 
-" set statusline+=%{gutentags#statusline()}
+" FZF
+""""""
+set rtp+=~/.fzf
+nnoremap <leader>ww :Windows<CR>
+nnoremap <leader><leader> :Buffers<CR>
+nnoremap <leader>o :Files<CR>
+nnoremap <leader>l :BLines<CR>
+nnoremap <leader>L :Lines<CR>
+nnoremap <leader>a :Rg 
+nnoremap <leader>A :Rg <c-r><c-w><cr> 
+nnoremap <leader>S :Snippets<CR>
 
-" let g:nord_italic = 1
-" let g:nord_italic_comments = 1
-" let g:nord_comment_brightness = 20
-"
 
-let g:tex_flavor = "latex"
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:pymode_rope_complete_on_dot = 1
+" Opening, closing, saving files
 
-" Pandoc
-let g:pandoc#command#autoexec_command = "Pandoc! pdf"
+" Quickly open and reload vimrc
+nnoremap <leader>rc :e ~/.vimrc<CR>
+nnoremap <leader>rl :source ~/.vimrc<CR>
 
-" Calendar
-nnoremap <leader>c :Calendar -view=year -split=vertical -width=27<CR>
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
+" Quit without saving
+nnoremap <leader>q :qa!<CR>
 
-" VimWiki
-let g:vimwiki_use_calendar = 1
-let g:vimwiki_list = [{'path': '~/wiki', 'path_html': '~/vimwiki/html', 'template_path': '~/vimwiki/templates/'}]
-au BufEnter,BufNew *.wiki nnoremap <leader><leader>r :Vimwiki2HTMLBrowse<CR>
-au BufEnter,BufNew *.wiki nnoremap <leader><leader>a :VimwikiAll2HTML<CR>
+" Save file
+map <leader>s :w!<cr>
+
+" Save and quit
+nnoremap <leader>x ZZ
 
