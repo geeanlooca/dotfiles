@@ -34,6 +34,11 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'jceb/vim-orgmode'
+Plugin 'tpope/vim-speeddating'
+Plugin 'unblevable/quick-scope'
+Plugin 'romainl/vim-cool'
+Plugin 'dhruvasagar/vim-zoom' " <C-w>m to toggle zoom
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -130,6 +135,9 @@ nnoremap <leader>wh <c-w><c-h>
 nnoremap <leader>ws :split<cr>
 nnoremap <leader>wv :vsplit<CR>
 nnoremap <leader>wd <C-W>q
+
+
+
 set splitright
 set splitbelow
 
