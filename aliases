@@ -30,6 +30,7 @@ alias ef='vim "$(fzf)"'
 alias clc='clear'
 alias q='clear'
 alias :q='exit'
+alias ls='ls --color=auto'
 alias sl='ls'
 alias ace='acestream-launcher -p mpv '
 
