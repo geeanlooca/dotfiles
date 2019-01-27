@@ -1,0 +1,268 @@
+#+AUTHOR: Gianluca Marcon
+#+TITLE: My Emacs configuration file
+#+EMAIL: marcon.gluca@gmail.com
+
+This file is formatted using org-mode, as explained in this [[https://harryrschwartz.com/2016/02/15/switching-to-a-literate-emacs-configuration][blog post.]]
+
+* MELPA
+#+BEGIN_SRC emacs-lisp
+  ;; load emacs 24's package system. Add MELPA repository.
+
+  ;; Added by Package.el.  This must come before configurations of
+  ;; installed packages.  Don't delete this line.  If you don't want it,
+  ;; just comment it out by adding a semicolon to the start of the line.
+  ;; You may delete these explanatory comments.
+  (require 'package)
+  (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+		      (not (gnutls-available-p))))
+	 (proto (if no-ssl "http" "https")))
+    ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+    (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+    ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+    (when (< emacs-major-version 24)
+      ;; For important compatibility libraries like cl-lib
+      (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
+  (package-initialize)
+
+  (when (>= emacs-major-version 24)
+    (require 'package)
+    (add-to-list
+     'package-archives
+     ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
+     '("melpa" . "http://melpa.milkbox.net/packages/")
+     t))
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-safe-themes
+     (quote
+      ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "12bacee81d067acf07dec4c867be541a04744a6ac6a39636de25a2c77e9b573c" default)))
+   '(package-selected-packages
+     (quote
+      (markdown-preview-mode markdown-mode emojify evil-org use-package evil-goggles rainbow-delimiters rainbow-mode beacon which-key evil-embrace magit ox-twbs helm-org-rifle org-ac htmlize evil-commentary evil-matchit spacemacs-theme hydra evil-indent-textobject evil-surround evil-leader auto-complete-auctex auto-complete auctex smart-mode-line-powerline-theme smart-mode-line lorem-ipsum solarized-theme oceanic-theme powerline evil helm))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(evil-goggles-change-face ((t (:inherit diff-removed))))
+   '(evil-goggles-delete-face ((t (:inherit diff-removed))))
+   '(evil-goggles-paste-face ((t (:inherit diff-added))))
+   '(evil-goggles-undo-redo-add-face ((t (:inherit diff-added))))
+   '(evil-goggles-undo-redo-change-face ((t (:inherit diff-changed))))
+   '(evil-goggles-undo-redo-remove-face ((t (:inherit diff-removed))))
+   '(evil-goggles-yank-face ((t (:inherit diff-changed)))))
+#+END_SRC
+
+
+* Evil mode
+#+BEGIN_SRC emacs-lisp
+   ;; Enable evil mode editing
+   (require 'evil-leader)
+   (require 'evil-surround)
+   (global-evil-leader-mode)
+   (global-evil-surround-mode 1)
+   (evil-leader/set-leader "<SPC>")
+   (evil-leader/set-key
+    "s" 'save-buffer
+    "d" 'evil-delete-buffer
+    "x" 'helm-M-x
+    "f" 'helm-find-files
+    "TAB" 'mode-line-other-buffer
+    "bn" 'evil-next-buffer
+    "bp" 'evil-prev-buffer
+    "bp" 'save-buffer
+    "ws" 'window-split-below-and-move
+    "wv" 'window-split-right-and-move
+    "wh" 'evil-window-left
+    "wj" 'evil-window-down
+    "wk" 'evil-window-up
+    "wl" 'evil-window-right
+    "wd" 'evil-window-delete
+    "wD" 'delete-other-windows
+    "o" 'helm-occur
+    "<SPC>" 'helm-mini
+    "eo" 'open-emacs-config
+    "er" 'reload-emacs-config
+    "pi" 'package-install
+    "pr" 'package-refresh-contents
+    "kk" 'save-buffers-kill-terminal
+  )
+
+   (defun open-emacs-config()
+     (interactive)
+     (find-file "~/.emacs"))
+
+   (defun reload-emacs-config()
+     (interactive)
+     (load-file "~/.emacs"))
+
+
+   ;; evil bindings for LaTex
+   (evil-leader/set-key-for-mode 'latex-mode
+     "ce" 'LaTeX-environment
+     "cs" 'LaTeX-section
+     "ll" 'TeX-command-run-all
+     "lc" 'TeX-command-master
+     "lv" 'TeX-view
+     "le" 'TeX-error-overview)
+
+   ;; evil bindings for LaTex
+   (evil-leader/set-key-for-mode 'org-mode
+     "o" 'helm-org-rifle)
+
+   (defun window-split-below-and-move ()
+     (interactive)
+     (split-window-below)
+     (other-window 1))
+
+   (defun window-split-right-and-move ()
+     (interactive)
+     (split-window-right)
+   (other-window 1))
+
+   (require 'evil)
+   (evil-mode 1)
+
+   ;; Configure bullets in org-mode
+
+   (load-theme 'spacemacs-light)
+   (sml/setup)
+
+
+   (require 'auto-complete)
+   (ac-config-default)
+   (setq ac-auto-start t)
+   (setq ac-auto-show-menu t)
+   (global-auto-complete-mode t)
+   (setq tab-always-indent 'complete)
+   (define-key ac-completing-map (kbd "C-j") 'ac-next)
+   (define-key ac-completing-map (kbd "C-k") 'ac-previous)  
+
+   (global-visual-line-mode t)
+
+   (require 'auto-complete-auctex)
+   (require 'evil-matchit)
+
+   (global-evil-matchit-mode 1)
+   (require 'auto-complete-auctex)
+   (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+
+   (require 'helm-config)
+   (helm-mode 1)
+   (global-set-key (kbd "M-x") 'helm-M-x)
+   (global-set-key (kbd "M-b") 'helm-mini)
+   (global-set-key (kbd "C-x C-f") 'helm-find-files)
+   (global-set-key (kbd "C-x C-b") 'helm-mini)
+   (setq helm-mode-fuzzy-match t)
+   (setq helm-completion-in-region-fuzzy-match t)
+   ;(setq helm-use-frame-when-more-than-two-windows t)
+   (setq helm-split-window-default-side 'below)
+   (setq helm-completion-in-region-fuzzy-match t)
+   (define-key helm-map (kbd "C-j") 'helm-next-line)
+   (define-key helm-map (kbd "C-k") 'helm-previous-line)
+   (setq helm-split-window-in-side-p t)
+
+   (global-set-key (kbd "M-h") 'nil)
+   (evil-define-key 'normal org-mode-map "t" 'org-todo)
+
+   ;; LaTeX options
+   (setq TeX-error-overview-open-after-TeX-run t)
+
+   ;; Hydra
+   ;; interesting article https://noctuid.github.io/blog/2015/02/03/a-more-evil-helm/
+   (require 'hydra)
+   (defhydra hydra-zoom (global-map "<f3>")
+     "zoom"
+     ("g" text-scale-increase "in")
+     ("l" text-scale-decrease "out"))
+
+   (defhydra hydra-windows (global-map "<f1>")
+     "windows"
+     ("h" evil-window-left "left")
+     ("j" evil-window-down "down")
+     ("k" evil-window-up "up")
+     ("l" evil-window-right "right")
+     ("J" evil-window-decrease-height "dec. height")
+     ("K" evil-window-increase-height "inc. height")
+     ("H" evil-window-decrease-width "dec. width")
+     ("L" evil-window-increase-width "inc. width")
+     ("s" evil-window-split "hsplit")
+     ("v" evil-window-vsplit "vsplit")
+     ("d" evil-window-delete "delete"))
+
+   ;; (require 'evil-org)
+   ;; (evil-define-key 'normal evil-org-mode-map
+   ;;   "M-j" 'org-metadown
+   ;;   "M-k" 'org-metaup
+   ;;   "M-h" 'org-metaleft
+   ;;   "M-l" 'org-metaright
+   ;;   "J" 'org-next-visible-heading
+   ;;   "K" 'org-previous-visible-heading
+   ;;   "M-J" 'org-shiftmetadown
+   ;;   "M-K" 'org-shiftmetaup
+   ;;   "M-H" 'org-shiftmetaleft
+   ;;   "M-L" 'org-shiftmetaright
+   ;;   "C-j" 'org-forward-heading-same-level
+   ;;   "C-k" 'org-backward-heading-same-level)
+
+   (require 'evil-embrace)
+   (evil-embrace-enable-evil-surround-integration)
+   ;; (add-hook 'org-mode-hook 'embrace-org-mode-hook)
+   (evil-embrace-enable-evil-surround-integration)
+
+
+   (require 'org-ac)
+   (org-ac/config-default)
+
+   (setq org-return-follows-link nil)
+   (setq org-open-non-existing-files t)
+
+   (require 'helm-org-rifle)
+
+   (require 'evil-commentary)
+   (evil-commentary-mode)
+
+   (add-to-list 'default-frame-alist '(font . "Fira Mono-12" ))
+   (set-face-attribute 'default t :font "Fira Mono-12" )
+   (setq org-src-tab-acts-natively t)
+   ;;(require 'org-trello)
+
+   (require 'which-key)
+   (which-key-mode)
+   (setq which-key-idle-delay 0.5)
+   (beacon-mode 1)
+
+   (use-package evil-goggles
+     :ensure t
+     :config
+     (evil-goggles-mode)
+     (evil-goggles-use-diff-faces))
+
+    (add-hook 'org-mode-hook (lambda ()
+			      (org-bullets-mode 1)
+			      ))
+   ;; 			   (embrace-org-mode-hook)
+   ;; 			   (evil-define-key 'normal org-mode-map
+   ;; 			     "M-j" 'org-metadown
+   ;; 			     "M-k" 'org-metaup
+   ;; 			     "M-h" 'org-metaleft
+   ;; 			     "M-l" 'org-metaright
+   ;; 			     "J" 'org-next-visible-heading
+   ;; 			     "K" 'org-previous-visible-heading
+   ;; 			     "M-J" 'org-shiftmetadown
+   ;; 			     "M-K" 'org-shiftmetaup
+   ;; 			     "M-H" 'org-shiftmetaleft
+   ;; 			     "M-L" 'org-shiftmetaright
+   ;; 			     "C-j" 'org-forward-heading-same-level
+   ;; 			     "C-k" 'org-backward-heading-same-level
+   ;; 			     "S-c" 'evil-change-line)
+   ;; 			   ))
+
+   (fset 'yes-or-no-p 'y-or-n-p)
+
+   (define-key helm-find-files-map "\t" 'helm-execute-persistent-action)
+
+#+END_SRC
