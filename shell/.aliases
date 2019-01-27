@@ -1,0 +1,62 @@
+# Directories and files
+
+alias green="cd /media/green/"
+alias red1="cd /media/red1/"
+alias red2="cd /media/red2/"
+alias gdocs="cd /media/green/Docs"
+
+alias dbox='cd ~/Dropbox'
+alias phd='cd ~/Nextcloud/PhD/'
+alias res='cd ~/Nextcloud/PhD/research'
+alias phc='cd ~/Nextcloud/PhD/courses'
+alias repo='cd ~/Documents/repos'
+
+# Configuration files
+alias zload='source ~/.zshrc'
+alias bload='source ./.bashrc'
+
+alias cfg-tmux='vim ~/.tmux.conf'
+alias zrc='vim ~/.zshrc'
+alias vrc='vim ~/.vimrc'
+alias i3c='vim ~/dotfiles/i3config'
+alias elias='vim ~/.aliases'
+
+# Random shortcuts
+alias o='xdg-open'
+alias of='xdg-open "$(fzf)"'
+alias e='vim'
+alias ef='vim "$(fzf)"'
+
+alias clc='clear'
+alias q='clear'
+alias :q='exit'
+alias ls='ls --color=auto'
+alias sl='ls'
+alias ace='acestream-launcher -p mpv '
+
+alias descr='tree . -d | less'
+alias desc='tree . -d'
+alias sxiv='sxiv -a'
+
+# Functions
+
+# Cheatsheets
+cs() {
+    case "$1" in
+        tmux)
+            xdg-open http://tmuxcheatsheet.com/
+            ;;
+        conda)
+            xdg-open https://conda.io/docs/_downloads/conda-cheatsheet%202019.pdf
+            ;;
+        *)
+            exit 1
+    esac
+}
+
+# Open tomb archives
+tombopen() {
+    tomb open "${1}.tomb" -k "${1}.tomb.key" -f
+    cd "/media/${1}"
+    xdg-open "/media/${1}"
+}
