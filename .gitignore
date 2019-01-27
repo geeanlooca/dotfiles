@@ -52,3 +52,4 @@ tags
 mpv/watch_later/*
 mpd/database
 tags
+emacs/.emacs.d/configuration.el
