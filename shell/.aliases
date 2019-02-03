@@ -10,6 +10,7 @@ alias phd='cd ~/Nextcloud/PhD/'
 alias res='cd ~/Nextcloud/PhD/research'
 alias phc='cd ~/Nextcloud/PhD/courses'
 alias repo='cd ~/Documents/repos'
+alias papers='cd ~/Nextcloud/PhD/bib/docs'
 
 # Configuration files
 alias zload='source ~/.zshrc'
@@ -59,4 +60,10 @@ tombopen() {
     tomb open "${1}.tomb" -k "${1}.tomb.key" -f
     cd "/media/${1}"
     xdg-open "/media/${1}"
+}
+
+
+# Open ssh connection to the departments' network
+deilogin(){
+    sshpass -f ~/.deipw ssh -o StrictHostKeyChecking=no marcongi@login.dei.unipd.it
 }
