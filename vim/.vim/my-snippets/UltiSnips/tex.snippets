@@ -1,0 +1,11 @@
+snippet fg "a TeX figure environment"
+\begin{figure}[${1:h}]
+	\label{fig:${2:my-figure-label}}
+
+	\centering
+	\includegraphics[scale=$3\linewidth]{$4}
+
+	\caption{${5: the caption of my figure}}
+\end{figure}
+$6
+endsnippet
