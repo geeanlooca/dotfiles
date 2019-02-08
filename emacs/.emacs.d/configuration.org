@@ -366,6 +366,12 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
   #+RESULTS:
   : t
   
+** helm org rifle
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-org-rifle
+    :ensure t)
+#+END_SRC
+  
 * fzf
 #+BEGIN_SRC emacs-lisp
   (use-package fzf
