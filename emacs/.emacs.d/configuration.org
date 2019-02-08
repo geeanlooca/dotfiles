@@ -11,10 +11,10 @@ This file is formatted using org-mode, as explained in this [[https://harryrschw
    #+END_SRC
    If multiple bindings are set for the command they will all be listed.
 2. For the inverse, given a key sequence, you can type
-      #+BEGIN_SRC 
+   #+BEGIN_SRC 
        C-h k key-sequence
-      #+END_SRC
-      to get the command that would run.
+   #+END_SRC
+   to get the command that would run.
 3. You can get detailed information about a command, also any non-interactive function defined, by typing
    #+BEGIN_SRC 
         C-h f function-name
@@ -56,8 +56,11 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
    
 ** Selected theme
 #+BEGIN_SRC emacs-lisp
-     (load-theme 'spacemacs-light t)
+     (load-theme 'leuven t)
 #+END_SRC
+
+#+RESULTS:
+: t
 
 * evil-mode and such
 ** evil
@@ -99,33 +102,31 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
 
        ;; mappings
        (evil-leader/set-key
-	 "s" 'save-buffer
-	 "d" 'evil-delete-buffer
-	 "x" 'helm-M-x
-	 "f" 'helm-find-files
-	 "TAB" 'mode-line-other-buffer
-	 "bn" 'evil-next-buffer
-	 "bp" 'evil-prev-buffer
-	 "bb" 'helm-buffers-list
-	 "ws" 'window-split-below-and-move
-	 "wv" 'window-split-right-and-move
-	 "wh" 'evil-window-left
-	 "wj" 'evil-window-down
-	 "wk" 'evil-window-up
-	 "wl" 'evil-window-right
-	 "wd" 'evil-window-delete
-	 "wD" 'delete-other-windows
-	 "o" 'helm-occur
-	 "<SPC>" 'helm-mini
-	 "eo" 'open-emacs-config
-	 "er" 'reload-emacs-config
-	 "pi" 'package-install
-	 "pr" 'package-refresh-contents
-	 "kk" 'save-buffers-kill-terminal
-	 "q" 'save-buffers-kill-terminal
-	 )
-
-       )
+         "s" 'save-buffer
+         "d" 'evil-delete-buffer
+         "x" 'helm-M-x
+         "f" 'helm-find-files
+         "TAB" 'mode-line-other-buffer
+         "bn" 'evil-next-buffer
+         "bp" 'evil-prev-buffer
+         "bb" 'helm-buffers-list
+         "ws" 'window-split-below-and-move
+         "wv" 'window-split-right-and-move
+         "wh" 'evil-window-left
+         "wj" 'evil-window-down
+         "wk" 'evil-window-up
+         "wl" 'evil-window-right
+         "wd" 'evil-window-delete
+         "wD" 'delete-other-windows
+         "o" 'helm-occur
+         "<SPC>" 'helm-mini
+         "eo" 'open-emacs-config
+         "er" 'reload-emacs-config
+         "pi" 'package-install
+         "pr" 'package-refresh-contents
+         "kk" 'save-buffers-kill-terminal
+         "q" 'save-buffers-kill-terminal
+         ))
    #+END_SRC
 ** evil-surround
 ** evil-commentary
@@ -208,17 +209,22 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
    #+END_SRC
    
 #+BEGIN_SRC emacs-lisp
-(use-package evil-org
-  :ensure t
-  :after org
-  :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
-              (evil-org-set-key-theme)))
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+  (use-package evil-org
+    :ensure t
+    :after org
+    :config
+    (require 'evil-org)
+    (add-hook 'org-mode-hook 'evil-org-mode)
+    (add-hook 'evil-org-mode-hook
+              (lambda ()
+                (evil-org-set-key-theme)))
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
 #+END_SRC
+
+#+RESULTS:
+: t
+
 *** Press 't' in evil normal mode to cycle TODO status on selected heading
 #+BEGIN_SRC emacs-lisp
   (evil-define-key 'normal org-mode-map "t" 'org-todo)
@@ -351,9 +357,14 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
       ;; use Ctrl-J and Ctrl-K to select the entries in helm (more vim-like)
       (define-key helm-map (kbd "C-j") 'helm-next-line)
       (define-key helm-map (kbd "C-k") 'helm-previous-line)
+
+      (define-key helm-find-files-map "\t" 'helm-execute-persistent-action)
       (setq helm-split-window-in-side-p t)
       )
   #+END_SRC
+
+  #+RESULTS:
+  : t
   
 * fzf
 #+BEGIN_SRC emacs-lisp
@@ -412,44 +423,36 @@ Emacs package that displays available keybindings in popup
 
 ** TODO swiper
 [[https://github.com/abo-abo/swiper][github repo]]
-* Autocompletion
-** auto-complete
-  #+BEGIN_SRC emacs-lisp
-        (use-package auto-complete
-          :ensure
-          :init
-          :config
-          (ac-config-default)
-          (global-auto-complete-mode t)
-          (setq ac-auto-start t)
-          (setq ac-auto-show-menu t)
-          (auto-complete-mode 1)
-          (setq tab-always-indent 'complete)
-          (add-to-list 'ac-modes 'org-mode)
-    )
-  #+END_SRC
-
-** TODO company-mode
+* LaTeX
 #+BEGIN_SRC emacs-lisp
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; (use-package company				       ;;
-  ;;   :ensure t					       ;;
-  ;;   :init					       ;;
-  ;;   :config					       ;;
-  ;;   (add-hook 'after-init-hook 'global-company-mode)) ;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (use-package auctex
+    :ensure t
+
+    :defer t
+    :config
+    (setq TeX-auto-save t))
+
+  (use-package ac-math
+    :ensure t
+    :config
+    (require 'ac-math))
+
+  (use-package auctex-latexmk
+    :ensure t)
 #+END_SRC
+
+#+RESULTS:
 
 * Snippets
 ** Load YASnippet
  #+BEGIN_SRC emacs-lisp
-        (use-package yasnippet
-        :ensure t
-        :init
-        :config
-      (yas-global-mode 1)
-   (setq-default ac-sources (push 'ac-source-yasnippet ac-sources))
-        )
+   (use-package yasnippet
+     :ensure t
+     :init
+     :config
+     (yas-global-mode 1)
+     (setq-default ac-sources (push 'ac-source-yasnippet ac-sources))
+     )
  #+END_SRC
 
 ** Install a collection of snippets
@@ -459,7 +462,7 @@ Emacs package that displays available keybindings in popup
        )
    #+END_SRC
  
-* TODO Python
+* Python
 ** elpy
 #+BEGIN_SRC emacs-lisp
   (use-package elpy
@@ -472,6 +475,37 @@ Emacs package that displays available keybindings in popup
 
 #+RESULTS:
 : t
+* Autocompletion
+** auto-complete
+  #+BEGIN_SRC emacs-lisp
+    (use-package auto-complete
+      :ensure
+      :init
+      :config
+      (ac-config-default)
+      (global-auto-complete-mode t)
+      (setq ac-auto-start t)
+      (setq ac-auto-show-menu t)
+      (auto-complete-mode 1)
+      (setq tab-always-indent 'complete)
+      (add-to-list 'ac-modes 'org-mode)
+      (add-to-list 'ac-modes 'latex-mode)
+      )
+  #+END_SRC
+
+  #+RESULTS:
+  : t
+
+** TODO company-mode
+#+BEGIN_SRC emacs-lisp
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; (use-package company				       ;;
+  ;;   :ensure t					       ;;
+  ;;   :init					       ;;
+  ;;   :config					       ;;
+  ;;   (add-hook 'after-init-hook 'global-company-mode)) ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#+END_SRC
 
 * Misc. options
 ** Smart Mode Line
@@ -481,14 +515,16 @@ Emacs package that displays available keybindings in popup
      (use-package smart-mode-line
        :ensure t
        :init
+       (setq powerline-default-separator-dir '(right . left))
        :config
-          (add-hook 'after-init-hook 'sml/setup)
-       )
+          (add-hook 'after-init-hook 'sml/setup))
    #+END_SRC
+   
 
+   
    #+RESULTS:
    : t
-   
+*** TODO Figure out how to set a decent theme like in spacemacs
 ** Google search
 #+BEGIN_SRC emacs-lisp
   (use-package google-this
@@ -503,7 +539,9 @@ Emacs package that displays available keybindings in popup
 ** Beacon
 Highlights cursor position when moving around files/windows
    #+BEGIN_SRC emacs-lisp
-     (beacon-mode 1)
+     (use-package beacon
+       :ensure t
+       :config (beacon-mode 1))
    #+END_SRC
 
    #+RESULTS:
@@ -528,6 +566,11 @@ Highlights cursor position when moving around files/windows
    #+BEGIN_SRC emacs-lisp
      (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
    #+END_SRC
+** Show matching parens
+#+BEGIN_SRC emacs-lisp
+  (setq show-paren-delay 0)
+(show-paren-mode 1)
+#+END_SRC
 * Dumb packages 
 ** lorem-ipsum
 #+BEGIN_SRC emacs-lisp
