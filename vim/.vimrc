@@ -235,7 +235,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/my-snippets/UltiSnips']
 let g:tex_flavor = "latex"
 
 
