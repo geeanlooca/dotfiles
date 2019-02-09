@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/gianluca/.oh-my-zsh"
+export ZSH="/home/gianluca/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -108,11 +108,15 @@ bindkey "^R" history-incremental-search-backward
 bindkey "^J" history-beginning-search-backward
 bindkey "^K" history-beginning-search-forward
 
- export NVM_DIR=~/.nvm
- [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+export NVM_DIR=~/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh 
+
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh 
 # added by Anaconda3 2018.12 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
