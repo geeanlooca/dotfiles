@@ -67,3 +67,61 @@ tombopen() {
 deilogin(){
     sshpass -f ~/.deipw ssh -o StrictHostKeyChecking=no marcongi@login.dei.unipd.it
 }
+
+blade-queue(){
+
+    # parse argument
+    if [ $# -eq 0 ]; then
+        DIR=.
+    else
+        DIR=$1
+    fi
+    
+    # assume the first argument is the directory containing the job to execute
+    # copy the directory to the blade gateway
+    JOB_DIR=$(readlink -f $DIR)
+    JOB_FILE=$JOB_DIR/main.job
+
+    if [ ! -f $JOB_FILE ]; then
+        echo "main.job file is missing!"
+    else
+        echo "Copying files to DEI's ssh login machine..."
+        sshpass -f ~/.deipw scp -o StrictHostKeyChecking=no -r $JOB_DIR  marcongi@login.dei.unipd.it:/home/marcongi/blade/jobs/
+
+        BASE_DIR=$(basename $JOB_DIR)
+        BLADE_DIR="~/blade/jobs/${BASE_DIR}"
+        JOB_FILE="${BLADE_DIR}/main.job"
+
+        echo "Uploading current directory to ${BLADE_DIR}"
+
+        # enqueu the job
+        cmd="cd ${BLADE_DIR}; qsub main.job";
+        echo $cmd | sshpass  -f ~/.deipw ssh -T -o StrictHostKeyChecking=no marcongi@login.dei.unipd.it
+    fi
+}
+
+blade-fetch(){
+
+    # parse argument
+    if [ $# -eq 0 ]; then
+        DIR=.
+    else
+        DIR=$1
+    fi
+
+    # assume the first argument is the directory containing the job to execute
+    # copy the directory to the blade gateway
+    JOB_DIR=$(readlink -f $DIR)
+    BASE_DIR=$(basename $JOB_DIR)
+    BLADE_DIR=/home/marcongi/blade/jobs/$BASE_DIR/results
+    LOCAL_DIR=$JOB_DIR
+
+    # use rsync to copy the content of the "/results" folder 
+    echo "Downloading ${BLADE_DIR} to ${LOCAL_DIR}..."
+    sshpass -f ~/.deipw rsync --progress -avz -e ssh  marcongi@login.dei.unipd.it:$BLADE_DIR $LOCAL_DIR
+
+}
+
+cloudlogin(){
+    ssh gmarcon@gate.cloudveneto.it
+}
