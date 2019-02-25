@@ -58,7 +58,7 @@ end
 %% Graphical properties
 
 fprintf('\n\nSetting default graphical properties\n');
-fprintf('====================================\n\n');
+fprintf('===================-----------------\n\n');
 
 fontSize = 14;
 
@@ -72,20 +72,13 @@ properties = {
     { 'defaultLegendLocation', 'best' }
     { 'defaultLineMarkerSize', 12 }
     { 'defaultAxesTitleFontSizeMultiplier', 1.2 }
-    { 'defaultAxesXMinorTick', 'on' }
-    { 'defaultAxesYMinorTick', 'on' }
-    { 'DefaultAxesXGrid', 'off' }
-    { 'DefaultAxesYGrid', 'off' }
-    
-    
-};
+    };
 
 for i = 1 : length(properties)
     p = properties{i};
     fprintf('\t- %s : %s\n', p{1}, mlreportgen.utils.toString(p{2}));
     set(groot, p{1}, p{2});
 end
-
 
 % Make the command window display variables in a compact way
 set(0, 'formatSpacing', 'compact')
@@ -113,9 +106,6 @@ end
 
 %% Diary
 
-fprintf('\nDiary\n');
-fprintf('=====\n\n');
-
 diarypath = '';
 
 if isunix
@@ -132,19 +122,13 @@ if isunix
 elseif ispc
     diarypath = userpath;
 end
-
-% create the directory containing the diary entries
-diarypath = fullfile(diarypath, '.diary');
-if ~exist(diarypath, 'dir')
-    mkdir(diarypath);
+diarypath = ful
+if ~exist(fullfile(diarypath, '.diary'))
+    mkdir(
 end
 
 filename = sprintf('diary-%s-%s', date, hostname);
 
-% enable diary logging
-diary(fullfile(diarypath, filename));
-
-fprintf('\t- Saving diary in %s\n', diarypath);
 
 %% Timers
 
