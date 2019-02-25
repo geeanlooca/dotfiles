@@ -20,23 +20,29 @@ fprintf('MATLAB License Number: %s\n', license);
 dirs = {};
 
 % Determine system platform
-if isunix
-    
-    nextCloudDir = fullfile('~', 'Nextcloud', 'PhD', 'research', 'code');
-    dropBoxDir = fullfile('~', 'Dropbox', 'code');
-    
-    dirs = {
-        nextCloudDir
-        dropBoxDir
-        fullfile(dropBoxDir, 'Raman')
-        fullfile(dropBoxDir, 'SIF')
-        fullfile(dropBoxDir, 'Utils')
-        fullfile('~', '.config', 'matlab', 'linspecer');
-        fullfile('~', '.config', 'matlab', 'cbrewer');
-        };
-    
+if isunix    
+    homeDir = fullfile('~');
+    dotFiles = fullfile(homeDir, '.config', 'matlab');
 elseif ispc
+    homeDir = fullfile(getenv('HOMEDRIVE'), getenv('HOMEPATH'));
+    dotFiles = fullfile(homeDir, 'dotfiles', 'matlab', '.config', 'matlab');
 end
+
+% Cloud storage location
+dropBoxDir = fullfile(homeDir, 'Dropbox', 'code');
+nextCloudDir = fullfile(homeDir, 'Nextcloud', 'PhD', 'research', 'code');
+
+dirs = {
+    nextCloudDir
+    dropBoxDir
+    fullfile(dropBoxDir, 'Raman')
+    fullfile(dropBoxDir, 'SIF')
+    fullfile(dropBoxDir, 'Utils')
+    fullfile(dropBoxDir, 'Numerical')
+    fullfile(dotFiles, 'linspecer');
+    fullfile(dotFiles, 'cbrewer');
+    };
+
 
 if ~isempty(dirs)
     D = length(dirs);
@@ -51,8 +57,7 @@ if ~isempty(dirs)
         else
             fprintf(2, '\t[FAILED] %s\n', directory)
         end
-    end
-    
+    end    
 end
 
 %% Graphical properties
@@ -74,10 +79,8 @@ properties = {
     { 'defaultAxesTitleFontSizeMultiplier', 1.2 }
     { 'defaultAxesXMinorTick', 'on' }
     { 'defaultAxesYMinorTick', 'on' }
-    { 'DefaultAxesXGrid', 'off' }
-    { 'DefaultAxesYGrid', 'off' }
-    
-    
+    { 'defaultAxesXGrid', 'off' }
+    { 'defaultAxesYGrid', 'off' }
 };
 
 for i = 1 : length(properties)
@@ -94,8 +97,6 @@ set(0, 'formatSpacing', 'compact')
 setGraphicalProperties('normal');
 
 % Set default colormap
-
-
 if exist('linspecer', 'file')
     % File Exchange - https://it.mathworks.com/matlabcentral/fileexchange/42673
     set(0,'DefaultFigureColormap',linspecer);
@@ -116,35 +117,34 @@ end
 fprintf('\nDiary\n');
 fprintf('=====\n\n');
 
-diarypath = '';
+diarypath = [];
 
-if isunix
-    dbox = fullfile('~', 'Dropbox');
-    nextCloud = fullfile('~', 'Nextcloud');
-    
-    if exist(dbox, 'dir')
-        diarypath = dbox;
-    elseif exist(nextCloud, 'dir')
-        diarypath = nextCloud;
-    else
-        diarypath = userpath;
-    end    
-elseif ispc
+if exist(dropBoxDir, 'dir')
+    diarypath = dropBoxDir;
+elseif exist(nextCloudDir, 'dir')
+    diarypath = nextCloudDir;
+else
+    % if neither Dropbox or Nextcloud are installed, save the diary files
+    % to the default userpath
     diarypath = userpath;
 end
 
-% create the directory containing the diary entries
-diarypath = fullfile(diarypath, '.diary');
-if ~exist(diarypath, 'dir')
-    mkdir(diarypath);
+if ~isempty(diarypath)
+    
+    % create the directory containing the diary entries
+    diarypath = fullfile(diarypath, '.diary');
+    if ~exist(diarypath, 'dir')
+        mkdir(diarypath);
+    end
+    
+    filename = sprintf('diary-%s-%s', date, hostname);
+
+    % enable diary logging
+    diary(fullfile(diarypath, filename));
+
+    fprintf('\t- Saving diary in %s\n', diarypath);
 end
 
-filename = sprintf('diary-%s-%s', date, hostname);
-
-% enable diary logging
-diary(fullfile(diarypath, filename));
-
-fprintf('\t- Saving diary in %s\n', diarypath);
 
 %% Timers
 
@@ -155,33 +155,5 @@ time = clock;
 time = time(4:end);
 fprintf('\n\n\t\t%d:%d:%d, %s\n', time(1), time(2), round(time(3)), date);
 
-
 % clear every variable used in this script.
 clear;
-
-
-
-function name = hostname()
-% GETCOMPUTERNAME returns the name of the computer (hostname)
-% name = getComputerName()
-%
-% WARN: output string is converted to lower case
-%
-%
-% See also SYSTEM, GETENV, ISPC, ISUNIX
-%
-% m j m a r i n j (AT) y a h o o (DOT) e s
-% (c) MJMJ/2007
-% MOD: MJMJ/2013
-[ret, name] = system('hostname');
-if ret ~= 0
-    if ispc
-        name = getenv('COMPUTERNAME');
-    else
-        name = getenv('HOSTNAME');
-    end
-end
-
-name = strtrim(lower(name));
-
-end
