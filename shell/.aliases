@@ -51,8 +51,18 @@ cs() {
             xdg-open https://conda.io/docs/_downloads/conda-cheatsheet%202019.pdf
             ;;
         *)
-            exit 1
+            curl cheat.sh/$1
+            ;;
     esac
+}
+
+# Weather
+weather() {
+    curl "wttr.in/${1}"
+}
+
+meteo(){
+    weather $1
 }
 
 # Open tomb archives
@@ -85,18 +95,21 @@ blade-queue(){
     if [ ! -f $JOB_FILE ]; then
         echo "main.job file is missing!"
     else
-        echo "Copying files to DEI's ssh login machine..."
-        sshpass -f ~/.deipw scp -o StrictHostKeyChecking=no -r $JOB_DIR  marcongi@login.dei.unipd.it:/home/marcongi/blade/jobs/
-
         BASE_DIR=$(basename $JOB_DIR)
         BLADE_DIR="~/blade/jobs/${BASE_DIR}"
         JOB_FILE="${BLADE_DIR}/main.job"
+        mkdir -p "${JOB_DIR}/results"
 
-        echo "Uploading current directory to ${BLADE_DIR}"
+        echo "Copying files to DEI's ssh login machine..."
+
+        # REPLACE WITH RSYNC
+        # sshpass -f ~/.deipw scp -o StrictHostKeyChecking=no -r $JOB_DIR  marcongi@login.dei.unipd.it:/home/marcongi/blade/jobs/
+
+        sshpass -f ~/.deipw rsync --progress -avz -e ssh "${JOB_DIR}"  marcongi@login.dei.unipd.it:/home/marcongi/blade/jobs
 
         # enqueu the job
         cmd="cd ${BLADE_DIR}; qsub main.job";
-        echo $cmd | sshpass  -f ~/.deipw ssh -T -o StrictHostKeyChecking=no marcongi@login.dei.unipd.it
+        echo $cmd | sshpass -f ~/.deipw ssh -T -o StrictHostKeyChecking=no marcongi@login.dei.unipd.it
     fi
 }
 
@@ -122,6 +135,34 @@ blade-fetch(){
 
 }
 
+blade-upload(){
+    # parse argument
+    if [ $# -eq 0 ]; then
+        DIR=.
+    else
+        DIR=$1
+    fi
+
+    # assume the first argument is the directory containing the job to execute
+    # copy the directory to the blade gateway
+    JOB_DIR=$(readlink -f $DIR)
+    BASE_DIR=$(basename $JOB_DIR)
+    BLADE_DIR=/home/marcongi/blade/jobs/$BASE_DIR/
+    LOCAL_DIR=$JOB_DIR
+
+    echo $JOB_DIR
+    echo $BASE_DIR
+    echo $LOCAL_DIR
+    echo $BLADE_DIR
+
+    # use rsync to copy the content of the folder to blade's login server
+    echo "Downloading ${BLADE_DIR} to ${LOCAL_DIR}..."
+    sshpass -f ~/.deipw rsync --progress -avz -e ssh $LOCAL_DIR marcongi@login.dei.unipd.it:$BLADE_DIR 
+
+
+}
+
 cloudlogin(){
     ssh gmarcon@gate.cloudveneto.it
 }
+
