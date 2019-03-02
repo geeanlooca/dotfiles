@@ -39,7 +39,7 @@ dirs = {
     fullfile(dropBoxDir, 'SIF')
     fullfile(dropBoxDir, 'Utils')
     fullfile(dropBoxDir, 'Numerical')
-    fullfile(dropBoxDir, 'Numerical\Shooting')
+    fullfile(dropBoxDir, 'Numerical/Shooting')
     fullfile(dotFiles, 'linspecer');
     fullfile(dotFiles, 'cbrewer');
     };
