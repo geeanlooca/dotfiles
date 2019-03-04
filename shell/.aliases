@@ -168,3 +168,15 @@ cloudlogin(){
     ssh gmarcon@gate.cloudveneto.it
 }
 
+
+# Rename, move, and download subtitles for TV shows
+tv-sort(){
+    
+    ARCHIVE_DIR=/media/green/Telefilm
+
+    filebot -rename *.mkv --format "${ARCHIVE_DIR}/{n}/Season {s.pad(2)}/{n} - {S00E00}" -non-strict
+}
+
+subs-download(){
+    subliminal download -l en -l it -a 7d /media/green/Telefilm/**
+}
