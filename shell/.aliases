@@ -39,6 +39,7 @@ alias descr='tree . -d | less'
 alias desc='tree . -d'
 alias sxiv='sxiv -a'
 alias img='sxiv -a'
+alias tv='cd /media/green/Telefilm'
 
 # Functions
 
