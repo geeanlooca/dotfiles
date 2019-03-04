@@ -38,6 +38,7 @@ alias ace='acestream-launcher -p mpv '
 alias descr='tree . -d | less'
 alias desc='tree . -d'
 alias sxiv='sxiv -a'
+alias img='sxiv -a'
 
 # Functions
 
