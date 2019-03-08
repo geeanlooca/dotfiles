@@ -133,3 +133,5 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
