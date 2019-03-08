@@ -296,3 +296,6 @@ map <leader>s :w!<cr>
 " Save and quit
 nnoremap <leader>x ZZ
 
+
+" Search and replace
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
