@@ -129,6 +129,12 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
          ))
    #+END_SRC
 ** evil-surround
+#+BEGIN_SRC emacs-lisp
+  (use-package evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode 1))
+#+END_SRC
 ** evil-commentary
 #+BEGIN_SRC emacs-lisp 
   (use-package evil-commentary
