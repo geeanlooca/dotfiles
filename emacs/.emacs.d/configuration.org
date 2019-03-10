@@ -581,7 +581,7 @@ Highlights cursor position when moving around files/windows
 
 ** Follow symlink 
 #+BEGIN_SRC emacs-lisp
-(setq vc-follow-symlinks t)
+(setq find-file-visit-truename t)
 #+END_SRC
 
 #+RESULTS:
