@@ -579,8 +579,13 @@ Highlights cursor position when moving around files/windows
        :config (beacon-mode 1))
    #+END_SRC
 
-   #+RESULTS:
-   : t
+** Follow symlink 
+#+BEGIN_SRC emacs-lisp
+(setq vc-follow-symlinks t)
+#+END_SRC
+
+#+RESULTS:
+: t
 
 ** Replace yes-or-no with y-or-n
    #+BEGIN_SRC emacs-lisp
