@@ -69,6 +69,7 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
        :ensure t ;; install the evil package if not installed
 
        :init ;; tweak evil's configuration before loading it
+       (setq evil-want-C-i-jump nil)
        (setq evil-search-module 'evil-search)
        (setq evil-ex-complete-emacs-commands nil)
        (setq evil-vsplit-window-right t)
