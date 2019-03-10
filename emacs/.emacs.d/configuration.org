@@ -126,8 +126,14 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
          "pr" 'package-refresh-contents
          "kk" 'save-buffers-kill-terminal
          "q" 'save-buffers-kill-terminal
+         "gd" 'magit-dispatch
+         "gs" 'magit-status
          ))
    #+END_SRC
+
+   #+RESULTS:
+   : t
+
 ** evil-surround
 #+BEGIN_SRC emacs-lisp
   (use-package evil-surround
@@ -407,7 +413,23 @@ Emacs package that displays available keybindings in popup
 #+RESULTS:
 : t
 
-* TODO magit
+* DONE magit
+CLOSED: [2019-03-10 dom 01:16]
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :init
+    :config 
+    )
+
+  (use-package evil-magit
+    :ensure t
+    :init
+    :config 
+  (require 'evil-magit)
+    )
+
+#+END_SRC
 * Searching
 ** ripgrep 
 #+BEGIN_SRC emacs-lisp
