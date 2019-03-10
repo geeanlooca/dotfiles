@@ -41,7 +41,16 @@ alias sxiv='sxiv -a'
 alias img='sxiv -a'
 alias tv='cd /media/green/Telefilm'
 
-# Functions
+# Conda 
+alias jn='jupyter-notebook'
+alias ca='conda activate'
+alias ce='conda env export > environment.yml'
+alias ccf='conda env create -f environment.yml'
+alias cde='conda deactivate'
+
+#############
+# Functions #
+#############
 
 # Cheatsheets
 cs() {
