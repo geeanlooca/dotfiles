@@ -127,8 +127,8 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
          "pr" 'package-refresh-contents
          "kk" 'save-buffers-kill-terminal
          "q" 'save-buffers-kill-terminal
-         "gd" 'magit-dispatch
-         "gs" 'magit-status
+         "G" 'magit-dispatch
+         "gg" 'magit-status
          ))
    #+END_SRC
 
