@@ -44,7 +44,7 @@ alias tv='cd /media/green/Telefilm'
 
 # Conda 
 alias jn='jupyter-notebook'
-alias ca='conda activate'
+alias ca="conda deactivate; conda activate \$(conda env list | awk 'FNR > 2 {print \$1}' | fzf)"
 alias ce='conda env export > environment.yml'
 alias ccf='conda env create -f environment.yml'
 alias cde='conda deactivate'
