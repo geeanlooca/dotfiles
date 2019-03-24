@@ -69,6 +69,7 @@ plugins=(
   vi-mode
   history-substring-search
   zsh-autosuggestions
+  fasd
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -124,5 +125,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 source ~/miniconda3/etc/profile.d/conda.sh
 source ~/.conda-auto-env/conda_auto_env.sh
 
+# FASD
+eval "$(fasd --init auto)"
 # add go to the path
 export PATH=$PATH:$(go env GOPATH)/bin
