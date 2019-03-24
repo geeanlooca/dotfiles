@@ -339,6 +339,14 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
   ;;          )))						  ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 #+END_SRC
+*** Github Markdown
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load "org"
+    '(require 'ox-gfm nil t))
+#+END_SRC
+
+#+RESULTS:
+: ox-gfm
 *** Twitter bootstrap
 #+BEGIN_SRC emacs-lisp
   (use-package ox-twbs
