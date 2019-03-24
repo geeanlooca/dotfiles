@@ -123,3 +123,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 source ~/miniconda3/etc/profile.d/conda.sh
 source ~/.conda-auto-env/conda_auto_env.sh
+
+# add go to the path
+export PATH=$PATH:$(go env GOPATH)/bin
