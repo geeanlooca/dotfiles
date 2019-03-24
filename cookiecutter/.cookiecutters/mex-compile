@@ -1,0 +1,20 @@
+%% Compilation script for MEX function {{ cookiecutter.mex }}
+
+append_flag = @(old, new) sprintf('%s %s', old, new);
+source_file = '{{ cookiecutter.mex }}';
+
+optimize = {{ cookiecutter.optimize }};
+
+CFLAGS = '-Wall -Wextra';
+LFLAGS = '-Wl,-v';
+
+if optimize
+    CFLAGS = append_flag(CFLAGS, '-Ofast -march=native');
+end
+
+CFLAGS = sprintf('CFLAGS="$CFLAGS %s"', CFLAGS);
+LFLAGS = sprintf('LDFLAGS="$LDFLAGS %s"', LFLAGS);
+
+mex('-v', CFLAGS, LFLAGS, ...
+    '-R2018a', source_file);
+
