@@ -10,7 +10,9 @@ export ZSH="/home/gianluca/.oh-my-zsh"
 # ZSH_THEME="bureau"
 # ZSH_THEME="honukai"
 # ZSH_THEME="spaceship"
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="miloshadzic"
+ZSH_THEME="candy"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
