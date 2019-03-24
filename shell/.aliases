@@ -190,3 +190,18 @@ tv-sort(){
 subs-download(){
     subliminal download -l en -l it -a 7d /media/green/Telefilm/**
 }
+
+pse(){
+    ps -e | grep -i $1
+}
+
+# Because typing "cd .." repeatedly is boring.
+up() {
+  local x='';
+  for i in $(seq ${1:-1}); do
+    x="$x../";
+  done;
+  cd $x;
+}
+
+
