@@ -26,10 +26,11 @@ alias elias='vim ~/.aliases'
 alias emacs='emacs -nw'
 # alias o='a -e xdg-open'
 # alias e='f -e vim'
-alias of='fzf | xargs -r xdg-open'
-alias ef='fzf | xargs -r vim'
+alias of="fzf | xargs -d '\n' -r xdg-open"
+alias ef="fzf | xargs -d '\n' -r vim"
 alias c='clear'
 alias q='dirs -v | head -10'
+alias :q='exit'
 alias ls='ls --color=auto'
 alias sl='ls'
 alias ace='acestream-launcher -p mpv '
@@ -39,7 +40,7 @@ alias tv="ls -t /media/green/Telefilm/**/*.{mkv,mp4} | fzf | xargs -r -0 xdg-ope
 alias img='sxiv -a'
 alias descr='tree . -d | less'
 alias desc='tree . -d'
-alias fm='pwd | xargs -r xdg-open'
+alias fm="pwd | xargs -d '\n' -r xdg-open"
 
 # Conda 
 alias jn='jupyter-notebook'

@@ -35,11 +35,7 @@ nextCloudDir = fullfile(homeDir, 'Nextcloud', 'PhD', 'research', 'code');
 dirs = {
     nextCloudDir
     dropBoxDir
-    fullfile(dropBoxDir, 'Raman')
-    fullfile(dropBoxDir, 'SIF')
-    fullfile(dropBoxDir, 'Utils')
-    fullfile(dropBoxDir, 'Numerical')
-    fullfile(dropBoxDir, 'Numerical/Shooting')
+    fullfile(dropBoxDir, 'codebase');
     fullfile(dotFiles, 'linspecer');
     fullfile(dotFiles, 'cbrewer');
     };
@@ -54,7 +50,7 @@ if ~isempty(dirs)
         directory = dirs{i};
         if exist(directory, 'dir')
             fprintf('\t[OK] %s\n', directory)
-            addpath(directory);
+            addpath(genpath(directory));
         else
             fprintf(2, '\t[FAILED] %s\n', directory)
         end

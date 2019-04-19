@@ -1,3 +1,6 @@
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin
 
@@ -7,6 +10,7 @@ export ZSH="/home/gianluca/.oh-my-zsh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME="bureau"
 # ZSH_THEME="honukai"
 # ZSH_THEME="spaceship"
@@ -124,10 +128,11 @@ export NVM_DIR=~/.nvm
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
-source ~/miniconda3/etc/profile.d/conda.sh
-source ~/.conda-auto-env/conda_auto_env.sh
+source ~/.miniconda3/etc/profile.d/conda.sh
+#source ~/.conda-auto-env/conda_auto_env.sh
 
 # FASD
 eval "$(fasd --init auto)"
 # add go to the path
 export PATH=$PATH:$(go env GOPATH)/bin
+
