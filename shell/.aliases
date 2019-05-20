@@ -16,11 +16,33 @@ alias papers='cd ~/Nextcloud/PhD/bib/docs'
 alias zload='source ~/.zshrc'
 alias bload='source ./.bashrc'
 
+
 alias cfg-tmux='vim ~/.tmux.conf'
 alias zrc='vim ~/.zshrc'
 alias vrc='vim ~/.vimrc'
-alias i3c='vim ~/dotfiles/i3config'
+alias i3c='vim ~/dotfiles/i3/.config/i3/config'
 alias elias='vim ~/.aliases'
+alias cfg-i3='vim ~/dotfiles/i3/.config/i3/config'
+alias cfg-i3blocks='vim ~/dotfiles/i3/.config/i3blocks/config'
+alias cfg-i3status='vim ~/dotfiles/i3/.config/i3status/config'
+alias cfg-compton='vim ~/dotfiles/compton/.config/compton/compton.conf'
+alias cfg-tmux='vim ~/dotfiles/tmux/.tmux.conf'
+alias cfg-rofi='vim ~/dotfiles/rofi/.config/rofi/config'
+alias cfg-mpv='vim ~/dotfiles/mpv/.config/mpv/*.conf'
+alias cfg-emacs='vim ~/dotfiles/emacs/.emacs.d/configuration.org'
+alias cfg-conda='vim ~/dotfiles/conda/.condarc'
+alias cfg-vim='vim ~/dotfiles/vim/.vimrc'
+alias cfg-htop='vim ~/dotfiles/htop/.config'
+alias ebm='vim ~/.config/surfraw/bookmarks'
+
+cfg() {
+    selected=$(fd . ~/dotfiles --hidden -t f -E .git | fzf)
+
+    if [ -n "$selected" ]; then
+        $EDITOR $selected
+    fi
+}
+
 
 # Random shortcuts
 alias emacs='emacs -nw'
@@ -29,6 +51,7 @@ alias emacs='emacs -nw'
 alias of="fzf | xargs -d '\n' -r xdg-open"
 alias ef="fzf | xargs -d '\n' -r vim"
 alias c='clear'
+alias clc='clear'
 alias q='dirs -v | head -10'
 alias :q='exit'
 alias ls='ls --color=auto'
@@ -43,7 +66,7 @@ alias desc='tree . -d'
 alias fm="pwd | xargs -d '\n' -r xdg-open"
 
 # Conda 
-alias jn='jupyter-notebook'
+alias jn='unset BROWSER && jupyter-notebook'
 alias ce='conda env export > environment.yml'
 alias ccf='conda env create -f environment.yml'
 alias cde='conda deactivate'
@@ -214,6 +237,23 @@ up() {
     x="$x../";
   done;
   cd $x;
+}
+
+webm4chong() {
+    if [ ! -f "$1" ]; then
+        echo "File does not exist"
+        exit 1
+    fi
+
+    ffmpeg -i "$1" -c:v libvpx -crf 12 -b:v 500K -an -threads 4 OUTPUT.webm > /dev/null
+}
+
+fzf-bookmarks() {
+    awk '{ print $1 }' $HOME/.config/surfraw/bookmarks | fzf | xargs -r surfraw 
+}
+
+rofi-bookmarks() {
+    awk '{ print $1 }' $HOME/.config/surfraw/bookmarks | rofi -dmenu | xargs -r surfraw 
 }
 
 

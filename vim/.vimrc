@@ -299,3 +299,6 @@ nnoremap <leader>x ZZ
 
 " Search and replace
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" Jedi: python autocomplete
+" let g:jedi#auto_initialization = 0

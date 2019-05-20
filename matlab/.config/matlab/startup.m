@@ -8,7 +8,6 @@
 fprintf('Executing startup.m\n');
 fprintf('===================\n\n');
 
-
 % Print Matlab version and system architecture
 fprintf('MATLAB version: %s\n', version);
 fprintf('Current architecture: %s\n', computer);

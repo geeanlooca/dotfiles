@@ -32,11 +32,11 @@ markup=none
 # #
 # # This displays "ARTIST - SONG" if a music is playing.
 # # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-
+#
 [mediaplayer]
 label=
-instance=spotify
-interval=5
+interval=1
+command=/home/gianluca/bin/music-blocklet
 signal=10
 
 # [mpd]
@@ -55,12 +55,12 @@ signal=10
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
-[volume]
-label=🔉
-instance=Master
-#instance=PCM
-interval=once
-signal=11
+#[volume]
+#label=🔉
+#instance=Master
+##instance=PCM
+#interval=once
+#signal=11
 
 # Memory usage
 #
@@ -90,17 +90,17 @@ interval=5
 label=/
 instance=/
 interval=30
-label=💽
+# label=SSD
 # Network interface monitoring
 #
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 
-[iface]
-instance=enp0s25
-color=#2182ff
-interval=10
-separator=false
+# [iface]
+# instance=enp0s25
+# color=#2182ff
+# interval=10
+# separator=false
 
 # [wifi]
 # #instance=wlp3s0
@@ -125,14 +125,14 @@ separator=false
 #[load_average]
 #interval=10
 
-# # Battery indicator
-# #
-# # The battery instance defaults to 0.
-# [battery]
-# label=BAT
-# #label=⚡
-# #instance=1
-# interval=30
+# Battery indicator
+#
+# The battery instance defaults to 0.
+#[battery]
+## label=BAT
+#label=⚡
+##instance=1
+#interval=30
 
 
 
@@ -148,9 +148,9 @@ separator=false
 # Support multiple chips, though lm-sensors.
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-# [temperature]
-# label=TEMP
-# interval=10
+[temperature]
+label=TEMP
+interval=10
 
 # Key indicators
 #
@@ -173,5 +173,5 @@ separator=false
 [time]
 # command=echo $(date '+%d/%m/%Y %H:%M:%S')
 command=echo $(date '+%d/%m/%Y %H:%M')
-interval=5
-label=📅
+interval=10
+label=

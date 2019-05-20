@@ -1,89 +1,67 @@
-#########################################
-#           solarized-dark              #
-#########################################
-
-set $base03 	#002b36	
-set $base02 	#073642	
-set $base01 	#586e75	
-set $base00 	#657b83	
-set $base0 	#839496	
-set $base1 	#93a1a1	
-set $base2 	#eee8d5	
-set $base3 	#fdf6e3	
-set $solarized-yellow 	#b58900	
-set $solarized-orange 	#cb4b16	
-set $solarized-red 	#dc322f	
-set $solarized-magenta	#d33682	
-set $solarized-violet 	#6c71c4	
-set $solarized-blue 	#268bd2	
-set $solarized-cyan 	#2aa198	
-set $solarized-green 	#859900	
-
-set $statuslineTextColor  #000000
-set $statuslineBackground #c0c0c0
-set $focusedActiveBorder #05056d
-set $focusedActiveBackground #05056d
-set $focusedActiveText #ffffff
-set $activeBorder #dddddd
-set $activeBackground #dddddd
-set $activeText #000000
-set $inactiveWindowBorder #002b36
-set $inactiveWindowBackground #002b36
-set $inactiveWindowText #fdf6e3
-
-set $inactiveBorder #c0c0c0
-set $inactiveBackground #c0c0c0
-set $inactiveText #000000
-set $urgentBorder #cb4b16
-set $urgentBackground #cb4b16
-set $urgentText #fdf6e3
-set $unfocusedBorder #073642
-set $unfocusedBackground #073642
-set $unfocusedText #fdf6e3
-
-#########################################
-#           CONFIGURATION               #
-#########################################
-
-# Remap Caps lock to Esc
-exec setxkbmap -option caps:swapescape
+ 
+# Color palette used for the terminal ( ~/.Xresources file )
+# Colors are gathered based on the documentation:
+# https://i3wm.org/docs/userguide.html#xresources
+# Change the variable name at the place you want to match the color
+# of your terminal like this:
+# [example]
+# If you want your bar to have the same background color as your 
+# terminal background change the line 362 from:
+# background #14191D
+# to:
+# background $term_background
+# Same logic applied to everything else.
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
 
 set $mod Mod4
-
-# set right shift as Mod3
-# exec xmodmap -e 'remove Shift = Shift_R'
-# exec xmodmap -e 'add Mod3 = Shift_R'
 
 font pango:Fira Sans 14
 
 floating_modifier $mod
 
 # start a terminal
-set $terminal gnome-terminal
-bindsym $mod+Return exec --no-startup-id gnome-terminal
-bindsym Control+space exec --no-startup-id /home/gianluca/bin/rofi-firefox.sh
-bindsym Control+$mod+b exec --no-startup-id /home/gianluca/bin/addbookmark.sh
-
-# kill focused window
+set $terminal konsole
+bindsym $mod+Return exec --no-startup-id $terminal
+bindsym Control+Shift+space exec --no-startup-id /home/gianluca/bin/rofi-firefox.sh
+# bindsym Control+$mod+b exec --no-startup-id /home/gianluca/bin/addbookmark.sh # kill focused window
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec "rofi -combi-modi window,drun,run -show combi -modi combi "
 # bindsym Mod3+d exec "rofi -combi-modi drun,run -show combi -modi combi "
 bindsym $mod+r exec "rofi -show run"
 bindsym Mod1+Tab exec "rofi -show window"
-bindsym Mod1+s exec ~/bin/rofi-scripts/rofi-surfraw/rofi-surfraw
-bindsym Mod1+f exec ~/bin/rofi-locate-2.sh
-bindsym Mod1+Shift+f exec ~/bin/rofi-locate-2.sh "papers "
-bindsym Mod1+p exec ~/bin/rofi-locate-2.sh "papers "
-bindsym Mod1+b exec ~/bin/rofi-locate-2.sh "Libri "
-bindsym $mod+F1 exec ~/bin/rofi-locate-2.sh "papers "
-bindsym $mod+F2 exec ~/bin/rofi-locate-2.sh "media/ Movies/ "
-bindsym $mod+F3 exec ~/bin/rofi-locate-2.sh "media Music "
-bindsym $mod+Shift+E exec ~/bin/rofi-emoji.sh
+bindsym Mod1+Shift+S exec ~/bin/scholar-search
+bindsym Mod1+s exec rofi-surfraw
+bindsym Mod1+f exec ~/bin/rofd ~
+bindsym Mod1+p exec ~/bin/rofd ~/Papers
+bindsym Mod1+b exec ~/bin/rofd ~/Nextcloud/Libri
+bindsym $mod+F1 exec ~/bin/rofd ~/Papers
+bindsym $mod+F2 exec ~/bin/rofd ~/Nextcloud/PhD
+bindsym $mod+F3 exec ~/bin/rofd ~/Nextcloud/Libri
+bindsym $mod+F4 exec ~/bin/rofd ~/
+bindsym $mod+Shift+E exec --no-startup-id ~/bin/rofi-emoji
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+egrave workspace prev_on_output
 bindsym $mod+plus workspace next_on_output
+# bindsym $mod+Shift+plus exec quickswitch.py -n -m && quickswitch.py -n
 
 # change focus
 bindsym $mod+h focus left
@@ -156,11 +134,11 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace $music
-bindsym $mod+F9 workspace $torrent
-bindsym $mod+F10 workspace $mail
-bindsym $mod+F11 workspace $telegram
-bindsym $mod+F12 workspace $res
+# bindsym $mod+0 workspace $music
+bindsym $mod+F9 workspace $music
+bindsym $mod+F10 workspace $torrent
+bindsym $mod+F11 workspace $mail
+bindsym $mod+F12 workspace $telegram
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -172,11 +150,10 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace $music
-bindsym $mod+Shift+F9 move container to workspace $torrent
-bindsym $mod+Shift+F10 move container to workspace $mail
-bindsym $mod+Shift+F11 move container to workspace $telegram
-bindsym $mod+Shift+F12 move container to workspace $res
+bindsym $mod+Shift+F9 move container to workspace $music
+bindsym $mod+Shift+F10 move container to workspace $torrent
+bindsym $mod+Shift+F11 move container to workspace $mail
+bindsym $mod+Shift+F12 move container to workspace $telegram
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -191,26 +168,33 @@ bindsym $mod+Shift+r restart
 bar {
 status_command i3blocks
 #status_command i3status
-colors {
-            statusline $statuslineTextColor
-            background $statuslineBackground
-                                #Border #Backgr #Font
-            active_workspace    $activeBorder $activeBackground $activeText
-            focused_workspace   $focusedActiveBorder $focusedActiveBackground $focusedActiveText
-            inactive_workspace  $inactiveBorder $inactiveBackground $inactiveText
-            urgent_workspace    $urgentBorder $urgentBackground $urgentText
+
+    colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
+
+#                      border  backgr. text
+        focused_workspace  #F9FAF9 #16a085 #EEE8D5
+        active_workspace   #595B5B #353836 #EEE8D5
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
     }
     mode dock
     position bottom
 }
 
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
-# class                 border              backgr.             text            indicator
-client.focused_inactive $inactiveWindowBorder     $inactiveWindowBackground $inactiveWindowText   $inactiveWindowText
-client.focused          $activeBorder       $activeBackground   $activeText     $activeText
-client.unfocused        $unfocusedBorder    $unfocusedBackground $unfocusedText $unfocusedText
-client.urgent           $urgentBorder   $urgentBackground   $urgentText $urgentText
-client.placeholder      #000000 #000000 #ffffff #000000
+  client.background       #2B2C2B
+
 
 # Remove titlebar
 new_window pixel 3
@@ -220,20 +204,18 @@ new_window pixel 3
 # CORE
 #exec --no-startup-id dunst
 exec_always --no-startup-id pkill compton ; compton
-#exec --no-startup-id volumeicon
-exec --no-startup-id numlockx
+exec --no-startup-id volumeicon
+# exec --no-startup-id numlockx
 exec --no-startup-id thunderbird
-exec --no-startup-id pamac
-exec --no-startup-id greenclip daemon
 
 # EXTRA
 exec --no-startup-id nm-applet
-# exec --no-startup-id redshift-gtk
+exec --no-startup-id redshift-gtk
 exec --no-startup-id dropbox start
 # exec --no-startup-id telegram-desktop
 
 assign [class="(?i)Clementine"] workspace $music
-# assign [class="(?i)spotify"] workspace $music
+assign [class="(?i)spotify"] workspace $music
 assign [class="(?i)Deluge"] workspace $torrent
 assign [class="(?i)Transmission"] workspace $torrent
 assign [class="(?i)Thunderbird"] workspace $mail
@@ -242,22 +224,33 @@ assign [class="(?i)gnome-system-monitor"] workspace $res
 
 for_window [class="Spotify"] move to workspace $music
 for_window [class="mpv"] floating enable
+for_window [class="yakuake"] floating enable
+for_window [class="Pavucontrol"] floating enable
+# for_window [class="^calibre-"] floating enable
+
 # for_window [class="feh"] floating enable
 for_window [class="ristretto"] floating enable
 for_window [window_role="Msgcompose"] floating enable
+for_window [class="^MATLAB" title="Figure*"] floating enable, border normal
+for_window [class="biz-papercut-pcng-client-uit-UserClient"] move scratchpad
 bindsym $mod+z [urgent=latest] focus
+
+bindsym $mod+o [class="^MATLAB" title="Figure*"] scratchpad show, border normal
+bindsym $mod+Shift+O [class="^MATLAB" title="Figure*"] move scratchpad, border normal
 
 # Application bindings
 bindsym $mod+u exec --no-startup-id firefox
 bindsym $mod+Shift+u exec --no-startup-id firefox --private-window
 bindsym $mod+Control+u exec --no-startup-id chromium
 
-bindsym $mod+t exec --no-startup-id pcmanfm
+bindsym $mod+t exec --no-startup-id dolphin
+bindsym $mod+Shift+t exec --no-startup-id telegram-desktop
 
 # Screenshot
-bindsym Print exec --no-startup-id xfce4-screenshooter -f
-bindsym Shift+Print exec --no-startup-id xfce4-screenshooter -r
-bindsym Control+Print exec --no-startup-id xfce4-screenshooter -w
+# bindsym Print exec --no-startup-id xfce4-screenshooter -f
+bindsym Print exec --no-startup-id spectacle -f
+bindsym Shift+Print exec --no-startup-id spectacle -r
+bindsym Control+Print exec --no-startup-id spectacle -a
 
 
 # Additional bindings
@@ -273,6 +266,7 @@ workspace_auto_back_and_forth yes
 # Mouse bindings
 set $middlebutton button2 
 set $leftbutton button1
+bindsym --release --whole-window button2 move scratchpad
 
 bindsym $mod+$middlebutton --whole-window floating toggle
 bindsym $mod+Shift+$middlebutton --whole-window kill
@@ -285,7 +279,6 @@ bindsym $mod+Shift+$leftbutton --whole-window sticky toggle ; exec notify-send "
 #     bindsym Escape mode "default"
 # }
 
-bindsym $mod+Escape mode "Session management"
 
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -297,57 +290,159 @@ bindsym $mod+Shift+b exec --no-startup-id quickswitch.py -m;
 bindsym $mod+period exec --no-startup-id quickswitch.py -s
 
 
-# Gaps
-gaps inner 5
-smart_gaps on
-smart_borders on # Wallpaper
-exec --no-startup-id feh --bg-scale /home/gianluca/Pictures/wallpaper
-bindsym $mod+XF86WakeUp exec --no-startup-id /home/gianluca/bin/random_wallpaper.py
 
 # Locking and Session Management
-bindsym $mod+XF86Sleep exec --no-startup-id /home/gianluca/bin/screenlocker/lockscreen
-bindsym $mod+XF86PowerOff exec --no-startup-id /home/gianluca/bin/manage_session.py
-exec xset s off
-exec --no-startup-id xautolock -time 30 -notify 2 -locker /home/gianluca/bin/screenlocker/lockscreen -notifier "Screen will be locked in 2 minutes"
+# bindsym $mod+XF86Sleep exec --no-startup-id /home/gianluca/bin/screenlocker/lockscreen
+# bindsym $mod+XF86PowerOff exec --no-startup-id /home/gianluca/bin/manage_session.py
+# exec xset s off
+# exec --no-startup-id xautolock -time 30 -notify 2 -locker /home/gianluca/bin/screenlocker/lockscreen -notifier "Screen will be locked in 2 minutes"
 
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 set $updatevolume exec 
-bindsym XF86WakeUp exec --no-startup-id ~/bin/volumecontrol.sh toggle
-bindsym XF86PowerOff exec --no-startup-id ~/bin/volumecontrol.sh increase
-bindsym XF86Sleep exec --no-startup-id ~/bin/volumecontrol.sh decrease
+# bindsym XF86WakeUp exec --no-startup-id ~/bin/volumecontrol.sh toggle
+# bindsym XF86PowerOff exec --no-startup-id ~/bin/volumecontrol.sh increase
+# bindsym XF86Sleep exec --no-startup-id ~/bin/volumecontrol.sh decrease
 
 # youtube
-bindsym $mod+y exec --no-startup-id /home/gianluca/bin/utube.sh
+bindsym $mod+y exec --no-startup-id /home/gianluca/bin/utube
 
 # MPD control 
 #bindsym $mod+i exec --no-startup-id /home/gianluca/bin/musicplayerhandler.sh
 # exec_always --no-startup-id ~/bin/musicstart
 # exec_always --no-startup-id ~/bin/i3mpd
-bindsym Mod1+space exec --no-startup-id ~/bin/musiccontrol.sh toggle
+# bindsym Mod1+space exec --no-startup-id ~/bin/musiccontrol.sh toggle
 
 # bindsym $mod+p exec --no-startup-id mpc toggle
-bindsym $mod+F5 exec --no-startup-id ~/bin/musiccontrol.sh prev
-bindsym $mod+F8 exec --no-startup-id ~/bin/musiccontrol.sh next
-bindsym $mod+Shift+F5 exec --no-startup-id mpc seek -10
-bindsym $mod+Shift+F8 exec --no-startup-id mpc seek +10
-bindsym $mod+F6 exec --no-startup-id mpc volume -5
-bindsym $mod+F7 exec --no-startup-id mpc volume +5
+# bindsym $mod+F5 exec --no-startup-id ~/bin/musiccontrol.sh prev
+# bindsym $mod+F8 exec --no-startup-id ~/bin/musiccontrol.sh next
+# bindsym $mod+Shift+F5 exec --no-startup-id mpc seek -10
+# bindsym $mod+Shift+F8 exec --no-startup-id mpc seek +10
+# bindsym $mod+F6 exec --no-startup-id mpc volume -5
+# bindsym $mod+F7 exec --no-startup-id mpc volume +5
 
 
 # Dropdown terminal
 for_window [window_role="dropdown"] floating enable
-bindsym $mod+o exec ~/bin/dropdown.sh
+# bindsym $mod+o exec ~/bin/dropdown.sh
 
 # ncmpcpp
-bindsym $mod+i exec --no-startup-id ~/bin/musicplayerhandler.sh
+# bindsym $mod+i exec --no-startup-id ~/bin/musicplayerhandler.sh
 for_window [window_role="ncmpcpp"] floating enable
 
 # test dunst config
 # bindsym $mod+p exec ~/bin/testdunst.sh
 # bindsym $mod+p exec --no-startup-id firefox "https://www.discogs.com/search/?q=$(mpc current)&type=all"
-bindsym $mod+p exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+# bindsym $mod+p exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-bindsym $mod+comma exec --no-startup-id ~/bin/addbookmark.sh
-bindsym $mod+Shift+comma exec --no-startup-id gnome-terminal --role=dropdown -- vim ~/bin/urls
+# bindsym $mod+comma exec --no-startup-id ~/bin/addbookmark.sh
+# bindsym $mod+Shift+comma exec --no-startup-id gnome-terminal --role=dropdown -- vim ~/bin/urls
 
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+# exec --no-startup-id manjaro-hello
+# exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+# exec --no-startup-id blueman-applet
+exec_always --no-startup-id sbxkb
+# exec --no-startup-id start_conky_maia
+# exec --no-startup-id start_conky_green
+exec --no-startup-id xautolock -time 10 -locker blurlock
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id /home/gianluca/bin/thinkpad-trackpoint.sh 200 100
+exec_always --no-startup-id blueman-applet
+exec --no-startup-id nextcloud
+exec --no-startup-id yakuake
+exec --no-startup-id /bin/sh /opt/pia/run.sh
 
 # for_window [urgent="latest" class="^Firefox$"] focus
+# Set inner/outer gaps
+gaps inner 5
+gaps outer 5
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Music
+# bindsym $mod+space exec playerctl play-pause
+bindsym $mod+Left exec playerctl previous && pkill -RTMIN+10 i3blocks
+bindsym $mod+Right exec playerctl next && pkill -RTMIN+10 i3blocks
+bindsym Mod1+space exec --no-startup-id ! pgrep -x "spotify" >/dev/null && spotify,  exec --no-startup-id playerctl play-pause && pkill -RTMIN+10 i3blocks
+# bindsym Shift+Print exec --no-startup-id xfce4-screenshooter -r
+bindsym XF86AudioMute exec amixer -D pulse set Master toggle
+bindsym XF86AudioMicMute exec amixer set Capture toggle
+bindsym $mod+Print exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym $mod+Up exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+
+bindsym XF86Display exec --no-startup-id autorandr -l default
+bindsym $mod+Shift+D exec --no-startup-id ~/bin/rofi-display
+
+bindsym XF86Launch2 exec --no-startup-id konsole -e octave-cli
+bindsym XF86Launch1 exec --no-startup-id /home/gianluca/bin/panel-toggle.sh
+
+# Mouse
+# bindsym --whole-window $mod+button2 kill
