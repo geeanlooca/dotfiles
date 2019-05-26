@@ -1,0 +1,56 @@
+super + d
+    rofi -combi-modi window,drun,run -show combi -modi combi 
+
+super + r
+    rofi -show run
+
+# Browsers
+super + {u, U, ctrl + u}
+    {firefox, firefox --private-window, chromium}
+
+super + K
+    pkill -USR1 sxhkd && notify-send "Keyboard shortcuts reloaded"
+
+# Find files
+super + o; {h,o,p,b,d}
+    rofd {~,~,~/Papers,~/Nextcloud/Libri, ~/Nextcloud/PhD} 
+
+# File managers
+super + {t,T}
+    {dolphin, thunar}
+
+# Misc. applications
+super + m; {m,M,t,T}
+    {matlab, mendeleydesktop,telegram-desktop,thunderbird}
+
+# Terminal
+super + Return
+    konsole
+
+# YouTube mpv handler
+super + y
+    utube
+
+# Emojis
+super + E
+    rofi-emoji
+
+# Music!
+alt + space
+    music-toggle
+
+super + {Left, Right}
+    playerctl {previous,next}
+
+super + space
+    rofi-firefox.sh
+
+super + {s, S, Y}
+    clipboard-search {google,scholar,youtube}
+
+{ctrl, super, _} + Print
+    spectacle {-a, -r, -f}
+
+ctrl + alt + k
+    rofi-kb-layout
+

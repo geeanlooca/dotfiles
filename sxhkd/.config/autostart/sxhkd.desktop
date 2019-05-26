@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=sxhkd
+GenericName=Simple X Hotkey Daemon
+Comment=A daemon for managing X shortcuts
+Exec=sh -c "pgrep sxhkd || sxhkd"
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true

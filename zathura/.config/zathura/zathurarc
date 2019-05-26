@@ -1,0 +1,2 @@
+set guioptions sv
+set incremental-search true
