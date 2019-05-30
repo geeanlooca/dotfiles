@@ -20,7 +20,7 @@ super + {t,T}
     {dolphin, thunar}
 
 # Misc. applications
-super + m; {m,M,t,T}
+super + m; {m,b,t,T}
     {matlab, mendeleydesktop,telegram-desktop,thunderbird}
 
 # Terminal
@@ -36,13 +36,13 @@ super + E
     rofi-emoji
 
 # Music!
-alt + space
+super + space
     music-toggle
 
 super + {Left, Right}
-    playerctl {previous,next}
+    playerctl -p spotify {previous,next}
 
-super + space
+alt + space
     rofi-firefox.sh
 
 super + {s, S, Y}
