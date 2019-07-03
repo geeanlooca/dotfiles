@@ -58,7 +58,7 @@ alias :q='exit'
 alias ls='ls --color=auto'
 alias sl='ls'
 alias ace='acestream-launcher -p mpv '
-alias tv="ls -t /media/green/Telefilm/**/*.{mkv,mp4} | fzf | xargs -r -0 xdg-open"
+alias tv="ls -t /home/gianluca/Videos/**/*.{mkv,mp4} | fzf | xargs -r -0 xdg-open"
 
 
 alias img='sxiv -a'
@@ -66,11 +66,17 @@ alias descr='tree . -d | less'
 alias desc='tree . -d'
 alias fm="pwd | xargs -d '\n' -r xdg-open"
 
+
 # Conda 
 alias jn='unset BROWSER && jupyter-notebook'
 alias ce='conda env export > environment.yml'
 alias ccf='conda env create -f environment.yml'
 alias cde='conda deactivate'
+alias ci='conda install'
+
+if [ -x "$(command -v bat)" ]; then
+    alias cat=bat
+fi
 
 cac() {
     # deactivate the current environment
@@ -210,23 +216,6 @@ blade-upload(){
 
 }
 
-cloudlogin(){
-    ssh gmarcon@gate.cloudveneto.it
-}
-
-
-# Rename, move, and download subtitles for TV shows
-tv-sort(){
-    
-    ARCHIVE_DIR=/media/green/Telefilm
-
-    filebot -rename *.mkv --format "${ARCHIVE_DIR}/{n}/Season {s.pad(2)}/{n} - {S00E00}" -non-strict
-}
-
-subs-download(){
-    subliminal download -l en -l it -a 7d /media/green/Telefilm/**
-}
-
 pse(){
     ps -e | grep -i $1
 }
@@ -256,5 +245,3 @@ fzf-bookmarks() {
 rofi-bookmarks() {
     awk '{ print $1 }' $HOME/.config/surfraw/bookmarks | rofi -dmenu | xargs -r surfraw 
 }
-
-

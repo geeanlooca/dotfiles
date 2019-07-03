@@ -9,3 +9,5 @@ export EDITOR=vim
 export MATLABPATH=/home/gianluca/.config/matlab
 export PATH=$PATH:$HOME/bin
 export CHEAT_COLORS=true
+
+source $HOME/bin/kb-layout-startup

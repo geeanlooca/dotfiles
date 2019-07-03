@@ -7,6 +7,7 @@
  '(custom-safe-themes
    (quote
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(org-agenda-files (quote ("~/Dropbox/org/work.org" "~/Dropbox/org/main.org")))
  '(package-selected-packages
    (quote
     (lorem-ipsum beacon google-this smart-mode-line elpy yasnippet-snippets yasnippet auctex-latexmk ac-math auctex helm-ag deadgrep evil-magit magit which-key fzf helm-org-rifle ox-twbs org-ref evil-org org-evil org-bullets org-ac evil-commentary evil-surround evil-leader evil lab-themes use-package))))
