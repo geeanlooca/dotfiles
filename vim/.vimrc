@@ -24,18 +24,17 @@ Plugin 'honza/vim-snippets'
 Plugin 'sirver/ultisnips'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'rbonvall/vim-textobj-latex'
+" Plugin 'rbonvall/vim-textobj-latex'
 Plugin 'kana/vim-textobj-user'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'tpope/vim-commentary'
 Plugin 'machakann/vim-highlightedyank'
-Plugin 'lervag/vimtex'
+" Plugin 'lervag/vimtex'
 Plugin 'junegunn/fzf.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'jceb/vim-orgmode'
-Plugin 'tpope/vim-speeddating'
+" Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'jceb/vim-orgmode'
 Plugin 'unblevable/quick-scope'
 Plugin 'romainl/vim-cool'
 Plugin 'dhruvasagar/vim-zoom' " <C-w>m to toggle zoom
@@ -106,24 +105,12 @@ nnoremap gn :bn<CR>
 nnoremap gp :bp<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>D :bd!<CR>
+
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+map <leader>cd :cd %:p:h<cr>:pwd<cr> 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-
-" Window management
-if bufwinnr(1)
-    map è <C-W>+
-    map - <C-W>-
-    map ò <C-W><
-    map à <C-W>>
-    map = <C-W>=
-    map ç :vertical resize -5<CR>
-    map ° :vertical resize +5<CR>
-    map _ :res -5<CR>
-    map é :res +5<CR>
-endif
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -136,8 +123,6 @@ nnoremap <leader>wh <c-w><c-h>
 nnoremap <leader>ws :split<cr>
 nnoremap <leader>wv :vsplit<CR>
 nnoremap <leader>wd <C-W>q
-
-
 
 set splitright
 set splitbelow
@@ -205,21 +190,12 @@ let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-
 " Spell Checking
 " Toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
-" Shortcuts using <leader>
-" map <leader>sn ]s
-" map <leader>sp [s
-" map <leader>sa zg
-" map <leader>s? z=
-
 
 " Commentary
 autocmd FileType c,cpp,java setlocal commentstring=//\ %s
-
-
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -242,30 +218,26 @@ let g:tex_flavor = "latex"
 " Vimtex
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_complete_enabled = 1
-let g:vimtex_complete_close_braces = 1
-let g:vimtex_view_general_viewer = 'zathura'
-let g:vimtex_view_method = "zathura"
-let g:vimtex_fold_enabled = 1
-let g:vimtex_complete_recursive_bib = 1
+" let g:vimtex_complete_enabled = 1
+" let g:vimtex_complete_close_braces = 1
+" let g:vimtex_view_general_viewer = 'zathura'
+" let g:vimtex_view_method = "zathura"
+" let g:vimtex_fold_enabled = 1
+" let g:vimtex_complete_recursive_bib = 1
 
 
 " Fugitive
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
-" Tags
-nnoremap <leader>g <C-]>
-set statusline+=%{gutentags#statusline()};
-
 " Autocompletion
 " Copy pasted from lervag's vimrc - https://github.com/lervag/dotvim/blob/master/vimrc
 " let g:ycm_key_invoke_completion = '<C-space>'
-if !exists('g:ycm_semantic_triggers')
-let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+" if !exists('g:ycm_semantic_triggers')
+" let g:ycm_semantic_triggers = {}
+" endif
+" let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 " let g:qf_auto_open_quickfix = 0
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+" let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
 
 " FZF
@@ -295,7 +267,6 @@ map <leader>s :w!<cr>
 
 " Save and quit
 nnoremap <leader>x ZZ
-
 
 " Search and replace
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
