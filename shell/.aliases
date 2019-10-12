@@ -11,6 +11,7 @@ alias res='cd ~/Nextcloud/PhD/research'
 alias phc='cd ~/Nextcloud/PhD/courses'
 alias repo='cd ~/Documents/repos'
 alias papers='cd ~/Nextcloud/PhD/bib/docs'
+alias cb='cd -'
 
 # Configuration files
 alias zload='source ~/.zshrc'
@@ -35,6 +36,7 @@ alias cfg-conda='vim ~/dotfiles/conda/.condarc'
 alias cfg-vim='vim ~/dotfiles/vim/.vimrc'
 alias cfg-htop='vim ~/dotfiles/htop/.config'
 alias ebm='vim ~/.config/surfraw/bookmarks'
+alias cfg-shortcuts='vim ~/dotfiles/sxhkd/.config/sxhkd/sxhkdrc'
 
 cfg() {
     selected=$(fd . ~/dotfiles --hidden -t f -E .git | fzf)
@@ -43,6 +45,10 @@ cfg() {
         $EDITOR $selected
     fi
 }
+
+
+# Shortcut for activating MATLAB since the license randomly expires
+alias matlab-activate='/usr/local/MATLAB/R2019b/bin/activate_matlab.sh'
 
 
 # Random shortcuts
@@ -61,11 +67,15 @@ alias ace='acestream-launcher -p mpv '
 alias tv="ls -t /home/gianluca/Videos/**/*.{mkv,mp4} | fzf | xargs -r -0 xdg-open"
 
 
-alias img='sxiv -a'
 alias descr='tree . -d | less'
 alias desc='tree . -d'
 alias fm="pwd | xargs -d '\n' -r xdg-open"
 
+# systemd
+alias sstatus='systemctl status'
+alias senable='systemctl enable --now'
+alias sstop='systemctl stop'
+alias srestart='systemctl restart'
 
 # Conda 
 alias jn='unset BROWSER && jupyter-notebook'
@@ -82,10 +92,7 @@ cac() {
     # deactivate the current environment
     CONDA_ENV=$(conda env list | awk 'FNR > 2 {print $1}' | fzf)
 
-    if [ -z "$CONDA_ENV" ]
-    then
-        # don't do anything
-    else
+    if [ ! -z "$CONDA_ENV" ]; then
         conda deactivate 
         conda activate $CONDA_ENV
     fi

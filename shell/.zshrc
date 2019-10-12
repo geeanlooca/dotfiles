@@ -7,6 +7,12 @@ bindkey  "^[[F"   end-of-line
 # Path to your oh-my-zsh installation.
 export ZSH="/home/gianluca/.oh-my-zsh"
 
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+    ZSH_THEME="robbyrussell"
+else
+    ZSH_THEME="candy"
+fi
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -16,7 +22,6 @@ export ZSH="/home/gianluca/.oh-my-zsh"
 # ZSH_THEME="spaceship"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="miloshadzic"
-ZSH_THEME="candy"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -76,6 +81,8 @@ plugins=(
   history-substring-search
   zsh-autosuggestions
   fasd
+  zsh-syntax-highlighting
+  navi
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -87,12 +94,6 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -116,6 +117,7 @@ bindkey "^R" history-incremental-search-backward
 bindkey "^J" history-beginning-search-backward
 bindkey "^K" history-beginning-search-forward
 
+
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
@@ -125,11 +127,12 @@ export NVM_DIR=~/.nvm
 
 # Change autosuggest color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+bindkey '^ ' autosuggest-accept
 
 # Add Anaconda to the path
 ANACONDA_PATH=~/.miniconda3/etc/profile.d/conda.sh
 if [ -f "$ANACONDA_PATH" ]; then
-    source ~/.miniconda3/etc/profile.d/conda.sh
+    source ~/.miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
 fi
 #source ~/.conda-auto-env/conda_auto_env.sh
 
@@ -138,6 +141,9 @@ eval "$(fasd --init auto)"
 
 # add go to the path
 export PATH=$PATH:$(go env GOPATH)/bin
+
+# source "$(navi widget zsh)"
+
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -183,3 +189,19 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/gianluca/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/gianluca/.miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/gianluca/.miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/gianluca/.miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
+
