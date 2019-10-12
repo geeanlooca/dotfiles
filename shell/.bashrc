@@ -170,6 +170,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash 
 
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash 
+
+# Bash specific aliases
+alias l='ls -lah'
+
+
+
 # added by Anaconda3 2018.12 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
