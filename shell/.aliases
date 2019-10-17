@@ -15,7 +15,7 @@ alias cb='cd -'
 
 # Configuration files
 alias zload='source ~/.zshrc'
-alias bload='source ./.bashrc'
+alias bload='source ~/.bashrc'
 
 
 alias cfg-hk='vim ~/.config/sxhkd/sxhkdrc'
