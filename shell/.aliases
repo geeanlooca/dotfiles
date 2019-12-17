@@ -39,7 +39,7 @@ alias ebm='vim ~/.config/surfraw/bookmarks'
 alias cfg-shortcuts='vim ~/dotfiles/sxhkd/.config/sxhkd/sxhkdrc'
 
 cfg() {
-    selected=$(fd . ~/dotfiles --hidden -t f -E .git | fzf)
+    selected=$(fd . ~/dotfiles --hidden -t f -E .git | fzf --preview="bat {} --color=always")
 
     if [ -n "$selected" ]; then
         $EDITOR $selected
@@ -61,8 +61,6 @@ alias c='clear'
 alias clc='clear'
 alias q='dirs -v | head -10'
 alias :q='exit'
-alias ls='ls --color=auto'
-alias sl='ls'
 alias ace='acestream-launcher -p mpv '
 alias tv="ls -t /home/gianluca/Videos/**/*.{mkv,mp4} | fzf | xargs -r -0 xdg-open"
 
@@ -85,8 +83,13 @@ alias cde='conda deactivate'
 alias ci='conda install'
 
 if [ -x "$(command -v bat)" ]; then
-    alias cat=bat
+    alias cat='bat'
 fi
+
+alias ls='ls --color=auto'
+# if [ -x "$(command -v exa)" ]; then
+#     alias ls='exa -l'
+# fi
 
 cac() {
     # deactivate the current environment
@@ -134,93 +137,8 @@ tombopen() {
 }
 
 
-# Open ssh connection to the departments' network
-deilogin(){
-    sshpass -f ~/.deipw ssh -o StrictHostKeyChecking=no marcongi@login.dei.unipd.it
-}
-
-blade-queue(){
-
-    # parse argument
-    if [ $# -eq 0 ]; then
-        DIR=.
-    else
-        DIR=$1
-    fi
-    
-    # assume the first argument is the directory containing the job to execute
-    # copy the directory to the blade gateway
-    JOB_DIR=$(readlink -f $DIR)
-    JOB_FILE=$JOB_DIR/main.job
-
-    if [ ! -f $JOB_FILE ]; then
-        echo "main.job file is missing!"
-    else
-        BASE_DIR=$(basename $JOB_DIR)
-        BLADE_DIR="~/blade/jobs/${BASE_DIR}"
-        JOB_FILE="${BLADE_DIR}/main.job"
-        mkdir -p "${JOB_DIR}/results"
-
-        echo "Copying files to DEI's ssh login machine..."
-
-        # REPLACE WITH RSYNC
-        # sshpass -f ~/.deipw scp -o StrictHostKeyChecking=no -r $JOB_DIR  marcongi@login.dei.unipd.it:/home/marcongi/blade/jobs/
-
-        sshpass -f ~/.deipw rsync --progress -avz -e ssh "${JOB_DIR}"  marcongi@login.dei.unipd.it:/home/marcongi/blade/jobs
-
-        # enqueu the job
-        cmd="cd ${BLADE_DIR}; qsub main.job";
-        echo $cmd | sshpass -f ~/.deipw ssh -T -o StrictHostKeyChecking=no marcongi@login.dei.unipd.it
-    fi
-}
-
-blade-fetch(){
-
-    # parse argument
-    if [ $# -eq 0 ]; then
-        DIR=.
-    else
-        DIR=$1
-    fi
-
-    # assume the first argument is the directory containing the job to execute
-    # copy the directory to the blade gateway
-    JOB_DIR=$(readlink -f $DIR)
-    BASE_DIR=$(basename $JOB_DIR)
-    BLADE_DIR=/home/marcongi/blade/jobs/$BASE_DIR/results
-    LOCAL_DIR=$JOB_DIR
-
-    # use rsync to copy the content of the "/results" folder 
-    echo "Downloading ${BLADE_DIR} to ${LOCAL_DIR}..."
-    sshpass -f ~/.deipw rsync --progress -avz -e ssh  marcongi@login.dei.unipd.it:$BLADE_DIR $LOCAL_DIR
-
-}
-
-blade-upload(){
-    # parse argument
-    if [ $# -eq 0 ]; then
-        DIR=.
-    else
-        DIR=$1
-    fi
-
-    # assume the first argument is the directory containing the job to execute
-    # copy the directory to the blade gateway
-    JOB_DIR=$(readlink -f $DIR)
-    BASE_DIR=$(basename $JOB_DIR)
-    BLADE_DIR=/home/marcongi/blade/jobs/$BASE_DIR/
-    LOCAL_DIR=$JOB_DIR
-
-    echo $JOB_DIR
-    echo $BASE_DIR
-    echo $LOCAL_DIR
-    echo $BLADE_DIR
-
-    # use rsync to copy the content of the folder to blade's login server
-    echo "Downloading ${BLADE_DIR} to ${LOCAL_DIR}..."
-    sshpass -f ~/.deipw rsync --progress -avz -e ssh $LOCAL_DIR marcongi@login.dei.unipd.it:$BLADE_DIR 
-
-
+deimount(){
+    mkdir -p $HOME/dei-home
 }
 
 pse(){
@@ -252,3 +170,5 @@ fzf-bookmarks() {
 rofi-bookmarks() {
     awk '{ print $1 }' $HOME/.config/surfraw/bookmarks | rofi -dmenu | xargs -r surfraw 
 }
+
+export DEI_USER=marcongi

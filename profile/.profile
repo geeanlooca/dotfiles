@@ -9,5 +9,8 @@ export EDITOR=vim
 export MATLABPATH=/home/gianluca/.config/matlab
 export PATH=$PATH:$HOME/bin
 export CHEAT_COLORS=true
+# export QT_QPA_PLATFORMTHEME=qt5ct
+# source $HOME/bin/caps_ctrlescape
+# source $HOME/bin/kb-layout-startup
 
-source $HOME/bin/kb-layout-startup
+export DEI_USER=marcongi

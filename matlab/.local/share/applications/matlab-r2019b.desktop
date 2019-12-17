@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=MATLAB R2019b
+Comment=Scientific computing environment
+Exec=/usr/local/bin/matlab -desktop
+Icon=matlab
+Terminal=false
+Type=Application
+Categories=Development;Math;Science;Education;
+StartupNotify=true
+MimeType=text/x-matlab
+

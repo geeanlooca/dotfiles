@@ -21,7 +21,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'honza/vim-snippets'
-Plugin 'sirver/ultisnips'
+" Plugin 'sirver/ultisnips'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 " Plugin 'rbonvall/vim-textobj-latex'
@@ -33,7 +33,7 @@ Plugin 'machakann/vim-highlightedyank'
 Plugin 'junegunn/fzf.vim'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'ludovicchabant/vim-gutentags'
 " Plugin 'jceb/vim-orgmode'
 Plugin 'unblevable/quick-scope'
 Plugin 'romainl/vim-cool'
@@ -156,7 +156,7 @@ nnoremap <CR> :noh<CR><CR>
 set nocursorline
 set ruler
 set number
-" set relativenumber
+set relativenumber
 set hidden
 set incsearch
 
@@ -250,6 +250,7 @@ nnoremap <leader>l :BLines<CR>
 nnoremap <leader>L :Lines<CR>
 nnoremap <leader>a :Rg 
 nnoremap <leader>A :Rg <c-r><c-w><cr> 
+nnoremap <leader>t :Tags<cr> 
 nnoremap <leader>S :Snippets<CR>
 
 

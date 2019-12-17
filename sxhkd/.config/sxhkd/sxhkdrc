@@ -13,7 +13,7 @@ super + K
 
 # Find files
 super + o; {h,o,p,b,d}
-    rofd {~,~,~/Papers,~/Nextcloud/Libri, ~/Nextcloud/PhD} 
+    rofd {~,~,~/Nextcloud/Libri, ~/Nextcloud/PhD} 
 
 # File managers
 super + {t,T}
@@ -42,15 +42,24 @@ super + space
 super + {Left, Right}
     playerctl -p spotify {previous,next}
 
-alt + space
-    rofi-firefox.sh
-
 super + {s, S, Y}
     clipboard-search {google,scholar,youtube}
 
 {ctrl, super, _} + Print
     spectacle {-a, -r, -f}
 
+super + e
+    emacs
+
+super + c
+    calibre
+
+super + z
+    zotero
+
 ctrl + alt + k
     rofi-kb-layout
+
+alt + p
+    bwmenu -C
 

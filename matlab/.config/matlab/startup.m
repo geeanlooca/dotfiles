@@ -4,7 +4,7 @@
 % Email (edu): gianluca.marcon@dei.unipd.it
 % Github: github.com/geeanlooca
 
-
+pwd
 fprintf('Executing startup.m\n');
 fprintf('===================\n\n');
 
@@ -28,15 +28,16 @@ elseif ispc
 end
 
 % Cloud storage location
-dropBoxDir = fullfile(homeDir, 'Dropbox', 'code');
-nextCloudDir = fullfile(homeDir, 'Nextcloud', 'PhD', 'research', 'code');
+% dropBoxDir = fullfile(homeDir, 'Dropbox', 'code');
+nextCloudDir = fullfile(homeDir, 'Nextcloud', 'PhD', 'research');
 
 dirs = {
-    nextCloudDir
-    dropBoxDir
-    fullfile(dropBoxDir, 'codebase');
+    fullfile(nextCloudDir, 'oct');
+%     fullfile(nextCloudDir, 'raman');
+    fullfile(nextCloudDir, 'codebase');
     fullfile(dotFiles, 'linspecer');
     fullfile(dotFiles, 'cbrewer');
+    fullfile(homeDir, 'Documents', 'repos', 'peg');
     };
 
 
@@ -103,7 +104,7 @@ end
 if exist('cbrewer', 'file')
     % File Exchange - www.mathworks.com/matlabcentral/fileexchange/34087
     % see http://colorbrewer2.org/ for more options
-    set(0,'DefaultFigureColormap',cbrewer('seq','YlOrRd',64, 'pchip'));
+    set(0,'DefaultFigureColormap',cbrewer('div','RdBu',64, 'pchip'));
     set(0,'DefaultAxesColorOrder',cbrewer('qual','Dark2', 8))
 end
 
@@ -115,9 +116,9 @@ fprintf('=====\n\n');
 
 diarypath = [];
 
-if exist(dropBoxDir, 'dir')
-    diarypath = dropBoxDir;
-elseif exist(nextCloudDir, 'dir')
+% if exist(dropBoxDir, 'dir')
+%     diarypath = dropBoxDir;
+if exist(nextCloudDir, 'dir')
     diarypath = nextCloudDir;
 else
     % if neither Dropbox or Nextcloud are installed, save the diary files
@@ -141,6 +142,17 @@ if ~isempty(diarypath)
     fprintf('\t- Saving diary in %s\n', diarypath);
 end
 
+
+%% Revert to old zoom buttons
+% set(groot,'defaultFigureCreateFcn',@(fig,~)addToolbarExplorationButtons(fig))
+% set(groot,'defaultAxesCreateFcn',@(ax,~)set(ax.Toolbar,'Visible','off'))
+
+try %#ok
+    if ~verLessThan('matlab','9.5')
+        set(groot,'defaultFigureCreateFcn',@(fig,~)addToolbarExplorationButtons(fig));
+        set(groot,'defaultAxesCreateFcn',  @(ax,~) set(ax.Toolbar,'Visible','off'));
+    end
+end
 
 %% Timers
 

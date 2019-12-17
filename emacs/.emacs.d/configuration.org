@@ -103,10 +103,12 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
 
        ;; mappings
        (evil-leader/set-key
+         "a" 'org-archive-subtree
          "s" 'save-buffer
          "d" 'evil-delete-buffer
          "x" 'helm-M-x
          "f" 'helm-find-files
+         "z" 'fzf
          "TAB" 'mode-line-other-buffer
          "bn" 'evil-next-buffer
          "bp" 'evil-prev-buffer
@@ -121,8 +123,8 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
          "wD" 'delete-other-windows
          "o" 'helm-occur
          "<SPC>" 'helm-mini
-         "eo" 'open-emacs-config
-         "er" 'reload-emacs-config
+         ;; "eo" 'open-emacs-config
+         ;; "er" 'reload-emacs-config
          "pi" 'package-install
          "pr" 'package-refresh-contents
          "kk" 'save-buffers-kill-terminal
@@ -173,7 +175,11 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
      (setq org-src-tab-acts-natively t)
      (setq org-src-fontify-natively t)
      (global-set-key (kbd "C-c i") (kbd "M-TAB"))
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.6))
    #+END_SRC
+
+   #+RESULTS:
+   | :foreground | default | :background | default | :scale | 1.6 | :html-foreground | Black | :html-background | Transparent | :html-scale | 1.0 | :matchers | (begin $1 $ $$ \( \[) |
    
 ** indentation
 #+BEGIN_SRC emacs-lisp
@@ -358,7 +364,17 @@ Cool collection of emacs packages: [[https://github.com/emacs-tw/awesome-emacs][
 #+END_SRC
 
 #+RESULTS:
+** Attachments
+#+BEGIN_SRC emacs-lisp
+    (require 'org-attach)
+    (setq org-link-abbrev-alist '(("att" . org-attach-expand-link)))
 
+    (require 'org-download)
+
+    ;; Drag-and-drop to `dired`
+    (add-hook 'dired-mode-hook 'org-download-enable)
+  (setq org-download-method 'attach)
+#+END_SRC
 * helm
   #+BEGIN_SRC emacs-lisp
     (use-package helm
@@ -455,11 +471,11 @@ CLOSED: [2019-03-10 dom 01:16]
 : t
 ** ag
 #+BEGIN_SRC emacs-lisp
-  (use-package helm-ag
-    :ensure t
-    :init
-    :config 
-    )
+  ;; (use-package helm-ag
+  ;;   :ensure t
+  ;;   :init
+  ;;   :config 
+  ;;   )
 #+END_SRC
 
 #+RESULTS:
@@ -468,20 +484,20 @@ CLOSED: [2019-03-10 dom 01:16]
 [[https://github.com/abo-abo/swiper][github repo]]
 * LaTeX
 #+BEGIN_SRC emacs-lisp
-  (use-package auctex
-    :ensure t
+  ;; (use-package auctex
+  ;;   :ensure t
 
-    :defer t
-    :config
-    (setq TeX-auto-save t))
+  ;;   :defer t
+  ;;   :config
+  ;;   (setq TeX-auto-save t))
 
-  (use-package ac-math
-    :ensure t
-    :config
-    (require 'ac-math))
+  ;; (use-package ac-math
+  ;;   :ensure t
+  ;;   :config
+  ;;   (require 'ac-math))
 
-  (use-package auctex-latexmk
-    :ensure t)
+  ;; (use-package auctex-latexmk
+  ;;   :ensure t)
 #+END_SRC
 
 #+RESULTS:
@@ -508,12 +524,12 @@ CLOSED: [2019-03-10 dom 01:16]
 * Python
 ** elpy
 #+BEGIN_SRC emacs-lisp
-  (use-package elpy
-    :ensure t 
-    :init 
-    :config 
-    (elpy-enable)
-(setq elpy-rpc-backend "jedi")  )
+  ;;   (use-package elpy
+  ;;     :ensure t 
+  ;;     :init 
+  ;;     :config 
+  ;;     (elpy-enable)
+  ;; (setq elpy-rpc-backend "jedi")  )
 #+END_SRC
 
 #+RESULTS:
@@ -526,15 +542,16 @@ CLOSED: [2019-03-10 dom 01:16]
       :init
       :config
       (ac-config-default)
-      (global-auto-complete-mode t)
+      ;; (global-auto-complete-mode t)
       (setq ac-auto-start t)
       (setq ac-auto-show-menu t)
-      (auto-complete-mode 1)
+      ;; (auto-complete-mode 1)
       (setq tab-always-indent 'complete)
-      (add-to-list 'ac-modes 'org-mode)
+      ;; (add-to-list 'ac-modes 'org-mode)
       (add-to-list 'ac-modes 'latex-mode)
       )
   #+END_SRC
+  
 
   #+RESULTS:
   : t
@@ -568,17 +585,6 @@ CLOSED: [2019-03-10 dom 01:16]
    #+RESULTS:
    : t
 *** TODO Figure out how to set a decent theme like in spacemacs
-** Google search
-#+BEGIN_SRC emacs-lisp
-  (use-package google-this
-    :ensure t
-    :init
-    :config
-    (google-this-mode 1)
-    (global-set-key (kbd "C-c s") 'google-this-mode-submap)
-    )
-#+END_SRC
-
 ** Beacon
 Highlights cursor position when moving around files/windows
    #+BEGIN_SRC emacs-lisp
@@ -602,8 +608,9 @@ Highlights cursor position when moving around files/windows
 
 ** Font
    #+BEGIN_SRC emacs-lisp
-     (add-to-list 'default-frame-alist '(font . "Fira Code-14" ))
-     (set-face-attribute 'default t :font "Fira Code-14" )
+     (set-face-attribute 'default nil :height 140)
+      ;; (add-to-list 'default-frame-alist '(font . "Fira Code-14" ))
+      ;; (set-face-attribute 'default t :font "Fira Code-14" )
    #+END_SRC
 
 ** Wrap lines
@@ -619,12 +626,21 @@ Highlights cursor position when moving around files/windows
   (setq show-paren-delay 0)
 (show-paren-mode 1)
 #+END_SRC
-* Dumb packages 
-** lorem-ipsum
+** Save session
 #+BEGIN_SRC emacs-lisp
-  (use-package lorem-ipsum
+  (desktop-save-mode 1)
+(save-place-mode 1) 
+#+END_SRC
+* Open PDF externally
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package openwith
     :ensure t 
     :config
+  
+  (openwith-mode t)
+  (setq openwith-associations '(("\\.pdf\\'" "okular" (file))))
     )
 #+END_SRC
 

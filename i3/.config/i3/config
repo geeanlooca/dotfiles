@@ -43,7 +43,7 @@ bindsym Control+Shift+space exec --no-startup-id /home/gianluca/bin/rofi-firefox
 # bindsym Control+$mod+b exec --no-startup-id /home/gianluca/bin/addbookmark.sh # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec "rofi -combi-modi window,drun,run -show combi -modi combi "
+# bindsym $mod+d exec "rofi -combi-modi window,drun,run -show combi -modi combi "
 # bindsym Mod3+d exec "rofi -combi-modi drun,run -show combi -modi combi "
 bindsym $mod+r exec "rofi -show run"
 bindsym Mod1+Tab exec "rofi -show window"
@@ -241,12 +241,12 @@ bindsym $mod+o [class="^MATLAB" title="Figure*"] scratchpad show, border normal
 bindsym $mod+Shift+O [class="^MATLAB" title="Figure*"] move scratchpad, border normal
 
 # Application bindings
-bindsym $mod+u exec --no-startup-id firefox
-bindsym $mod+Shift+u exec --no-startup-id firefox --private-window
-bindsym $mod+Control+u exec --no-startup-id chromium
+# bindsym $mod+u exec --no-startup-id firefox
+# bindsym $mod+Shift+u exec --no-startup-id firefox --private-window
+# bindsym $mod+Control+u exec --no-startup-id chromium
 
-bindsym $mod+t exec --no-startup-id dolphin
-bindsym $mod+Shift+t exec --no-startup-id telegram-desktop
+# bindsym $mod+t exec --no-startup-id dolphin
+# bindsym $mod+Shift+t exec --no-startup-id telegram-desktop
 
 # Screenshot
 # bindsym Print exec --no-startup-id xfce4-screenshooter -f

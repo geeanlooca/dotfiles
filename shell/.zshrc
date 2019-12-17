@@ -205,3 +205,15 @@ fi
 # unset __conda_setup
 # # <<< conda initialize <<<
 
+# zsh users only
+if [ -f "$HOME/.fzf-extras/fzf-extras.zsh" ]; then
+  source "$HOME/.fzf-extras/fzf-extras.zsh"
+fi
+
+export DEI_PW_FILE=$HOME/.deipw
+export DEI_USER=marcongi
+export REMOTE_ADDRESS=192.168.1.100
+export REMOTE_USER=gianluca
+
+export AUTOENV_ENABLE_LEAVE="yes"
+source ~/.autoenv/activate.sh
