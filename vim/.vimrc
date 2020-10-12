@@ -93,7 +93,7 @@ else
     " colorscheme jellyx
     " colorscheme desert
     " colorscheme Tomorrow
-    " set background=dark
+    set background=dark
     "
     " colorscheme solarized
     " colorscheme nord

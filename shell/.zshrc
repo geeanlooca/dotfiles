@@ -2,22 +2,22 @@ bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/gianluca/.oh-my-zsh"
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    ZSH_THEME="robbyrussell"
-else
-    ZSH_THEME="candy"
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#     ZSH_THEME="robbyrussell"
+# else
+#     ZSH_THEME="candy"
+# fi
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="bureau"
+ZSH_THEME="bureau"
 # ZSH_THEME="honukai"
 # ZSH_THEME="spaceship"
 # ZSH_THEME="agnoster"
@@ -81,8 +81,6 @@ plugins=(
   history-substring-search
   zsh-autosuggestions
   fasd
-  zsh-syntax-highlighting
-  navi
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -137,10 +135,10 @@ fi
 #source ~/.conda-auto-env/conda_auto_env.sh
 
 # FASD
-eval "$(fasd --init auto)"
+# eval "$(fasd --init auto)"
 
 # add go to the path
-export PATH=$PATH:$(go env GOPATH)/bin
+# export PATH=$PATH:$(go env GOPATH)/bin
 
 # source "$(navi widget zsh)"
 
@@ -216,4 +214,9 @@ export REMOTE_ADDRESS=192.168.1.100
 export REMOTE_USER=gianluca
 
 export AUTOENV_ENABLE_LEAVE="yes"
-source ~/.autoenv/activate.sh
+# source ~/.autoenv/activate.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
+
+

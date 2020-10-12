@@ -1,1 +1,1 @@
-$HOME/bin/caps_ctrlescape
+# $HOME/bin/caps_ctrlescape
